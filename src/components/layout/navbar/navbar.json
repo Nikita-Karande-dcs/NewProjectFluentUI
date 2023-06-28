@@ -1,0 +1,32 @@
+[
+	{
+		"id":1,
+		"title": "Home",
+		"url": "/home",
+		"icon": "/img/maintainancedt.svg",
+		"iconHover": "/img/maintenance-hover-icon.svg",
+		"dropdownShow": true,
+		"common": false,
+		"dropdown": [],
+		"visited": []
+	},
+	{
+		"id": 2,
+		"title": "Contacts",
+		"url": "/contact",
+		"icon": "/img/contactdt.svg",
+		"iconHover": "/img/Contacts2.svg",
+		"dropdownShow": true,
+		"common": false,
+
+		"dropdown": [
+			{
+				"title": "contact",
+				"url": "/contact",
+				"icon": "/img/contactgrey.svg",
+				"icondark": "/img/contactwhite.svg"
+			}
+		],
+		"visited": []
+	}
+]

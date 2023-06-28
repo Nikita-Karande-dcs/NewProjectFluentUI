@@ -1,0 +1,133 @@
+.mc__header {
+	height: 54px;
+	// box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	& .mc__logo {
+		min-width: 250px;
+		line-height: 48px;
+		display: flex;
+		& .btn-hamburger {
+			position: relative;
+			min-width: 48px;
+			height: 48px;
+			padding: 0;
+			background: none;
+			& span,
+			& span:before,
+			& span:after {
+				min-width: 20px;
+				height: 2px;
+				background: $primary;
+				position: absolute;
+				top: 22px;
+				left: 0;
+			}
+			& span {
+				left: 13px;
+				background: $secondary;
+			}
+			& span:before {
+				content: '';
+				top: -5px;
+			}
+			& span:after {
+				content: '';
+				top: 5px;
+			}
+		}
+
+		& .navbar-brand {
+			padding: 0;
+			margin: 0;
+			font-size: 20px;
+			text-decoration: none;
+			color: $default;
+			font-weight: 700;
+		}
+	}
+}
+.mc__search {
+	min-width: 500px;
+	border: solid 1px #ccc;
+	border-radius: 0px;
+	position: relative;
+	// margin-left: 15px;
+	& svg {
+		position: absolute;
+		top: 11px;
+		left: 14px;
+	}
+	& .ms-SearchBox {
+		width: 100%;
+		border: none;
+		border-radius: 0px !important;
+		&:after {
+			border-radius: 0px !important;
+		}
+	}
+	& .ms-Dropdown-container {
+		width: 100px;
+		.ms-Dropdown-title {
+			border: none;
+			background: none;
+		}
+	}
+}
+.mc-header-right {
+	width: 100%;
+	& .ms-Button {
+		min-width: 50px;
+		text-align: center;
+		min-height: 50px;
+		border-radius: 0px;
+		position: relative;
+
+		& .ms-Icon {
+			color: $primary;
+			margin: 0 auto;
+			font-size: 20px;
+		}
+		&:hover {
+			background: $primarylight;
+			//background-color: rgb(62, 61, 61);
+			//color: rgb(244, 244, 244);
+		}
+	}
+	& .btn-notify.is-unread:before {
+		content: '';
+		width: 8px;
+		height: 8px;
+		background: $orange;
+		border-radius: 50%;
+		position: absolute;
+		top: 15px;
+		right: 14px;
+	}
+	& .btn-user {
+		padding: 9px;
+		border-radius: 0px;
+		margin-right: 15px;
+		cursor: pointer;
+		& .ms-TooltipHost {
+			max-width: 80px;
+			font-weight: 600;
+			font-size: $medium;
+			display: block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		&light:hover {
+			background: #f3f2f1;
+			//background-color: rgb(62, 61, 61);
+			//color: rgb(244, 244, 244);
+		}
+		&dark:hover {
+			background: #151515;
+			//background-color: rgb(62, 61, 61);
+			//color: rgb(244, 244, 244);
+		}
+	}
+}

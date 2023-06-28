@@ -1,0 +1,13 @@
+@mixin whBoth {
+	width: 100%;
+	height: 100%;
+}
+@mixin mcInput {
+	border-color: #ddd;
+	border-radius: 4px;
+}
+@mixin truncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
