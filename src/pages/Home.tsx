@@ -120,7 +120,6 @@ const Home = () => {
 										styles={pageIconButtonStyles(myThemeContext)}
 										iconProps={fullScreen ? screenInPopup : fullScreenIcon}
 										ariaLabel="Fullscreen popup modal"
-										style={{backgroundColor:"gray",width:"10px",height:"20px"}}
 									/> 
 								</Stack>
 							</Stack>

@@ -15,6 +15,7 @@ import {
 } from '../../styles/ListStyle';
 import { HandleStyles, Resizable } from 're-resizable';
 import SelectionItem from '../shared/SelectionItem';
+import HomeListData from './HomeListData';
 
 export interface IHomeListProps {
 	fullScreen: boolean;
@@ -24,8 +25,8 @@ const ButtonIcon: IIconProps = { iconName: 'Breadcrumb' };
 
 interface IStaticListState {
 	data: any[];
+	active: any;
 }
-
 class HomeList extends React.Component<
 	IHomeListProps,
 	IStaticListState
@@ -66,9 +67,18 @@ class HomeList extends React.Component<
 					"name": "Mr Strange",
 				}
 			],
+			active: null,
 		};
 		this.state = state;
 	}
+
+	handleRowClick = (
+		item?: any,
+		index?: number,
+		ev?: React.FocusEvent<HTMLElement>
+	) => {
+		this.setState({ active: item });
+	};
 
 	public render() {
 		return (
@@ -159,19 +169,13 @@ class HomeList extends React.Component<
 															? 'detailListLight'
 															: 'detailListDark'}
 														items={this.state?.data || []}
-														// onActiveItemChanged={this.handleRowClick}
+														onActiveItemChanged={this.handleRowClick}
 														// getKey={this._getKey}
 														setKey="multiple"
 														columns={this._overflowColumns}
 														onRenderItemColumn={this._onItemRender}
 														selectionPreservedOnEmptyClick={true}
 														isHeaderVisible={false}
-													// checkboxCellClassName="hideWorkFlowCheckBox" items={[]}													// checkboxVisibility={this.state.selectionDetails ===
-													// 	'No items selected'
-													// 	? 2
-													// 	: 2} items={[]}														// selection={
-													// 	this._selection as ISelection<IObjectWithKey>
-													// }
 													/>
 												</Stack>
 											</div>
@@ -181,8 +185,8 @@ class HomeList extends React.Component<
 								</div>
 							</div>
 
-							<h2>Welcome!</h2>
-
+							{/* <h2>Welcome!</h2> */}
+							<HomeListData items={this.state.active} />
 						</div>
 					)}
 				</ThemeContext.Consumer>
@@ -196,8 +200,6 @@ class HomeList extends React.Component<
 
 	private _onItemRender = (item: any, index?: number, column?: IColumn) => {
 		if (column?.name === 'Select All') {
-			let deltalength = 65;
-			if (item.comments != null || item.subType != null) deltalength += 27;
 			return (
 				<div className="cardSection">
 					<div
@@ -219,10 +221,8 @@ class HomeList extends React.Component<
 						/>
 					</div>
 					<div dir="ltr">
-						{(item.comments != null || item.subType != null) && (
-							<span data-selection-disabled={true}>
-							</span>
-						)}
+						<span data-selection-disabled={true}>
+						</span>
 					</div>
 				</div>
 			);

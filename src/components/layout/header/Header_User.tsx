@@ -9,7 +9,7 @@ import {
 import { useTheme } from '../../../Context/ThemeContext';
 
 export const HeaderUser: React.FunctionComponent = () => {
-	const { themeName, setTheme } = useTheme();
+	const themeName = useTheme().themeName;
 	const linkRef = React.useRef(null);
 	const [showContextualMenu, setShowContextualMenu] = React.useState(false);
 	const onShowContextualMenu = React.useCallback(
@@ -67,10 +67,11 @@ export const HeaderUser: React.FunctionComponent = () => {
 				onClick={onShowContextualMenu}
 				ref={linkRef}
 				className={
-					themeName == 'Light'
+					themeName === 'Light'
 						? 'btn-user btn-userlight d-flex align-items-center'
 						: 'btn-user btn-userdark d-flex align-items-center'
-				}>
+				}
+				>
 				<Persona text="User" size={PersonaSize.size32} />
 				<ContextualMenu
 					items={menuItems}

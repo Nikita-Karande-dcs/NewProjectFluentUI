@@ -15,16 +15,15 @@ export const HeaderSetting: React.FunctionComponent = () => {
 		<>
 			<ActionButton
 				styles={headerButtonStyle(myThemeContext, themeName)}
-				iconProps={{ iconName: themeName == 'Dark' ? 'Sunny' : 'ClearNight' }}
+				iconProps={{ iconName: themeName === 'Dark' ? 'Sunny' : 'ClearNight' }}
 				onClick={() => {
-					if (themeName == 'Light') {
+					if (themeName === 'Light') {
 						setTheme(ThemeName.Dark);
 					} else {
 						setTheme(ThemeName.Light);
 					}
 				}}
-				text='Change theme'
-				title={themeName == 'Dark' ? 'Light Mode' : 'Dark Mode'}
+				title={themeName === 'Dark' ? 'Light Mode' : 'Dark Mode'}
 			/>
 		</>
 	);

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@fluentui/react';
 import App from './App';
 import Home from './pages/Home';
@@ -7,10 +7,9 @@ import NotFoundPage from './pages/404';
 import React from 'react';
 import { ThemeContext, ThemeName } from './Context/ThemeContext';
 import { darkTheme, lightTheme } from './themes/themes';
-
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
+initializeIcons();
 const Main = () => {
-	const location: any = useLocation();
-	const background = location.state && location.state.background;
 	const [themeName, setTheme] = React.useState<any>(
 		window.localStorage.getItem('theme') == null
 			? ThemeName.Light
