@@ -11,7 +11,7 @@ import {
 import React from 'react';
 import { DetailsList, IColumn } from '@fluentui/react';
 import {
-	BankAccountListClassNames,
+ ListClassNames,
 } from '../../styles/ListStyle';
 import { HandleStyles, Resizable } from 're-resizable';
 import SelectionItem from '../shared/SelectionItem';
@@ -52,19 +52,75 @@ class HomeList extends React.Component<
 			data: [
 				{
 					"id": 1,
-					"name": "Spiderman",
+					"name": "John",
+					"age": 25,
+					"email": "john@example.com",
+					"phone": "123-456-7890",
+					"address": "123 Main Street",
+					"city": "New York",
+					"country": "USA",
+					"occupation": "Software Engineer",
+					"salary": 75000
 				},
 				{
 					"id": 2,
-					"name": "Hulk",
+					"name": "Emily",
+					"age": 32,
+					"email": "emily@example.com",
+					"phone": "987-654-3210",
+					"address": "456 Elm Street",
+					"city": "San Francisco",
+					"country": "USA",
+					"occupation": "Marketing Manager",
+					"salary": 90000
 				},
 				{
 					"id": 3,
-					"name": "Iron Man",
+					"name": "Michael",
+					"age": 40,
+					"email": "michael@example.com",
+					"phone": "555-123-4567",
+					"address": "789 Oak Avenue",
+					"city": "London",
+					"country": "UK",
+					"occupation": "Financial Analyst",
+					"salary": 85000
 				},
 				{
-					"id": 3,
-					"name": "Mr Strange",
+					"id": 4,
+					"name": "Sophia",
+					"age": 28,
+					"email": "sophia@example.com",
+					"phone": "456-789-0123",
+					"address": "321 Pine Street",
+					"city": "Paris",
+					"country": "France",
+					"occupation": "Graphic Designer",
+					"salary": 60000
+				},
+				{
+					"id": 5,
+					"name": "William",
+					"age": 35,
+					"email": "william@example.com",
+					"phone": "789-012-3456",
+					"address": "567 Maple Avenue",
+					"city": "Toronto",
+					"country": "Canada",
+					"occupation": "Project Manager",
+					"salary": 80000
+				},
+				{
+					"id": 6,
+					"name": "Olivia",
+					"age": 29,
+					"email": "olivia@example.com",
+					"phone": "012-345-6789",
+					"address": "890 Cedar Street",
+					"city": "Sydney",
+					"country": "Australia",
+					"occupation": "Sales Representative",
+					"salary": 65000
 				}
 			],
 			active: null,
@@ -109,7 +165,7 @@ class HomeList extends React.Component<
 										label='selectAll'
 										// checked={this._selection.isAllSelected()}
 										// onChange={this.handleSelectAll}
-										className={BankAccountListClassNames.CheckBooks}
+										className={ListClassNames.CheckBooks}
 										styles={{
 											checkbox: {
 												borderRadius: '100%',
@@ -158,12 +214,16 @@ class HomeList extends React.Component<
 												window.localStorage.getItem('theme') === 'Light'
 													? 'customScrollbar'
 													: 'customScrollbarDark'
-											}>
+											}
+											>
 											<div
 												className="twoPaneList"
+												style={{
+													backgroundColor: 'rgb(231 231 231)',
+												}}
 											>
 												<Stack
-													className={BankAccountListClassNames.ListStyle}>
+													className={ListClassNames.ListStyle}>
 													<DetailsList
 														className={window.localStorage.getItem('theme') === 'Light'
 															? 'detailListLight'
@@ -186,7 +246,7 @@ class HomeList extends React.Component<
 							</div>
 
 							{/* <h2>Welcome!</h2> */}
-							<HomeListData items={this.state.active} />
+							<HomeListData item={this.state.active} />
 						</div>
 					)}
 				</ThemeContext.Consumer>

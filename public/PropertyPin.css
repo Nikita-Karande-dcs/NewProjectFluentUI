@@ -1,0 +1,130 @@
+.animatedCircle {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background-color: transparent;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* border: 1px solid black; */
+	/* box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.1); */
+	cursor: pointer;
+	transition: box-shadow 0.15s ease-in-out, border 0.15s ease-in-out;
+	color: #656565;
+	pointer-events: all;
+	will-change: transform;
+}
+.animatedCircle svg {
+	transition: 0.15s ease-in-out;
+}
+.animatedCircle:hover {
+	box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.15);
+	color: #2ea09b;
+}
+.animatedCircle:hover svg {
+	transform: scale(1.15);
+}
+.menuBase {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80px;
+	height: 80px;
+	pointer-events: none;
+	border-radius: 50%;
+	z-index: 99;
+}
+.buttonBase {
+	width: 30px;
+	height: 30px;
+	color: white;
+	border: none;
+	/* background-color: #2ea09b; */
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline: 0;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+	transform: scale(1);
+}
+
+.buttonBase svg {
+	transition: 0.25s ease-in-out;
+}
+.pinPersistant {
+	display: inline-block;
+}
+.basePinButtonContainer {
+	display: none;
+}
+.propertyCard:hover .basePinButtonContainer {
+	display: inline-block;
+}
+.pinPersistant button {
+	background: none;
+}
+.propertydtRow:hover .propertydtName {
+	color: red !important;
+}
+.propertydtRow:hover .basePinButtonContainer {
+	display: inline-block;
+	position: relative;
+}
+.propertyCard .layedPin,
+.propertyCard .basePinButtonContainer,
+.propertyCard .pinPersistant {
+	position: absolute;
+	top: 10px;
+	right: -13px;
+}
+.propertydtRow {
+	min-height: 47px;
+}
+.propertydtRow[aria-selected='true'],
+.detailListLight .ms-DetailsRow[aria-selected='true'],
+.detailListLight .ms-DetailsRow[aria-selected='true']:hover {
+	background-color: #cfe4fa;
+}
+.propertydtRow[aria-selected='true'],
+.detailListDark .ms-DetailsRow[aria-selected='true'],
+.detailListDark .ms-DetailsRow[aria-selected='true']:hover {
+	background-color: #0c3e73;
+}
+
+.propertydtRow .buttonBase {
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	padding-bottom: 5px;
+}
+
+/* -------------------------- */
+.rhfDatePicker i {
+	visibility: hidden !important;
+}
+
+.rhfDatePicker:hover i {
+	visibility: visible !important;
+}
+.rhfDatePicker > div > div > div > div {
+	border: 1px solid transparent;
+	background: transparent !important;
+}
+.rhfDatePicker > div > div > div > div > div {
+	font-size: 12px;
+}
+.rhfDatePicker > div > div > div > div > div[aria-expanded='true'] {
+	border: 1px solid lightgray;
+}
+
+.rhfDatePicker > div > div > div > div:hover,
+.rhfDatePicker > div > div > div > div:active,
+.rhfDatePicker > div > div > div > div:focus {
+	border: 1px solid lightgray;
+}
+#propertyId > div::after {
+	border: none !important;
+}

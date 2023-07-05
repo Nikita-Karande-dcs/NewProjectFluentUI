@@ -21,7 +21,7 @@ const commonStyles: IRawStyle = {
 };
 
 
-export const BankAccountListClassNames = mergeStyleSets({
+export const ListClassNames = mergeStyleSets({
 	stackItemLabelStyles: {
 		fontSize: '11px',
 	},
