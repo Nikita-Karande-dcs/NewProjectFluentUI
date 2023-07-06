@@ -8,6 +8,7 @@ import React from 'react';
 import { ThemeContext, ThemeName } from './Context/ThemeContext';
 import { darkTheme, lightTheme } from './themes/themes';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
+import Dashboard from './pages/Dashboard';
 initializeIcons();
 const Main = () => {
 	const [themeName, setTheme] = React.useState<any>(
@@ -37,6 +38,7 @@ const Main = () => {
 						<Route path="/home" element={<Home />} />
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/" element={<Home />} />
+						<Route path="/dashboard" element={<Dashboard />} />
 						<Route path="*" element={<NotFoundPage />} />
 					</Route>
 				</Routes>

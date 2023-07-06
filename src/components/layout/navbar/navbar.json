@@ -1,6 +1,17 @@
 [
 	{
 		"id":1,
+		"title": "Dashboard",
+		"url": "/dashboard",
+		"icon": "/img/dashboarddt.svg",
+		"iconHover": "/img/dashboard-hover-icon.svg",
+		"dropdownShow": true,
+		"common": false,
+		"dropdown": [],
+		"visited": []
+	},
+	{
+		"id":2,
 		"title": "Home",
 		"url": "/home",
 		"icon": "/img/dashboarddt.svg",
@@ -11,7 +22,7 @@
 		"visited": []
 	},
 	{
-		"id": 2,
+		"id": 3,
 		"title": "Contacts",
 		"url": "/contact",
 		"icon": "/img/contactdt.svg",
