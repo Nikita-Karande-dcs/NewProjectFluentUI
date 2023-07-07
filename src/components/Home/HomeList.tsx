@@ -8,6 +8,10 @@ import {
 	Stack,
 	ThemeContext,
 } from '@fluentui/react';
+import {
+	contactListContentStylesOld,
+	contactListSectionStackTokens
+} from '../../styles/ContactStyles';
 import React from 'react';
 import { DetailsList, IColumn } from '@fluentui/react';
 import {
@@ -246,7 +250,7 @@ class HomeList extends React.Component<
 							</div>
 
 							{/* <h2>Welcome!</h2> */}
-							<HomeListData item={this.state.active} />
+							<HomeListData data={this.state.active} contentStyles={contactListContentStylesOld} classNames={ListClassNames} sectionStackTokens={contactListSectionStackTokens} handleHideModel={undefined} setContactModifySuccess={undefined} />
 						</div>
 					)}
 				</ThemeContext.Consumer>
