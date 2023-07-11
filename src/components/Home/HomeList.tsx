@@ -166,7 +166,7 @@ class HomeList extends React.Component<
 									}}>
 									<Checkbox
 										data-selection-toggle-all
-										label='selectAll'
+										label='Select All'
 										// checked={this._selection.isAllSelected()}
 										// onChange={this.handleSelectAll}
 										className={ListClassNames.CheckBooks}
