@@ -9,6 +9,7 @@ import { ThemeContext, ThemeName } from './Context/ThemeContext';
 import { darkTheme, lightTheme } from './themes/themes';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import Dashboard from './pages/Dashboard';
+import HomeDetailModal from './components/Home/HomeDetailModal';
 initializeIcons();
 const Main = () => {
 	const [themeName, setTheme] = React.useState<any>(
@@ -40,6 +41,11 @@ const Main = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/dashboard" element={<Dashboard />} />
 						<Route path="*" element={<NotFoundPage />} />
+						<Route
+								path="/contact/:selectedContactId"
+								element={<HomeDetailModal />
+								}
+							/>
 					</Route>
 				</Routes>
 			</ThemeContext.Provider>
