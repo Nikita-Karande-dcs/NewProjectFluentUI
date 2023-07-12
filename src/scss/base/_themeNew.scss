@@ -1,12 +1,9 @@
 input[type="text"]{ border: 1px solid #d4d4d9;}
-.formGroup{margin-bottom: 1rem;}
+.text-right{ text-align: right;}
+.ms-Toggle-innerContainer [aria-checked="true"]:hover{ background-color: green;}
 .switchList .switchListinner{ display: flex;
-& .ms-Toggle:not(:first-child){
-	margin-left: 20px;
-}
-& .ms-Toggle{
-	& label{ margin-bottom:8px;}
-}
+& .ms-Toggle:not(:first-child){ margin-left: 20px; }
+& .ms-Toggle{ & label{ margin-bottom:8px;} }
 }
 .toggleswichbtn .ms-Toggle-innerContainer{
 	position: relative;
@@ -18,4 +15,19 @@ input[type="text"]{ border: 1px solid #d4d4d9;}
 .switchList button:hover{ background-color: green;}
 .switchList button[aria-checked="false"]{background-color: green;
 	& span{ background-color: #FFF;}
+}
+.formGroup{margin-bottom: 1rem;
+	& label{ font-size: 14px; margin-bottom: 8px; display: block;}
+	& .ms-TextField-field{ min-height: 32px;}
+}
+.ms-Dropdown-container{border: 1px solid lightgray !important;}
+.ms-Dropdown-container span.ms-Dropdown-caretDownWrapper { visibility: visible !important; }
+.ms-Dropdown:focus::after, .ms-TextField-fieldGroup::after{ border: none !important; display: none !important;}
+.clearBoth{ clear: both;}
+.toggleswichList{
+	display: flex; flex-wrap: wrap;
+	& .toggleswichListInner{display: flex; align-items: center;
+		& label{ margin-left: 20px;}
+	}
+	& .ms-Toggle{ margin-bottom: 0;}
 }
