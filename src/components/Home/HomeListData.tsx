@@ -510,7 +510,7 @@ export default function HomeListData({
 											// }}
 											calloutProps={{
 												className: `${
-													themeName == 'Light'
+													themeName === 'Light'
 														? 'datePickerCalloutLight'
 														: 'datePickerCalloutDark'
 												}`,
