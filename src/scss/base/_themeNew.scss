@@ -1,0 +1,21 @@
+input[type="text"]{ border: 1px solid #d4d4d9;}
+.formGroup{margin-bottom: 1rem;}
+.switchList .switchListinner{ display: flex;
+& .ms-Toggle:not(:first-child){
+	margin-left: 20px;
+}
+& .ms-Toggle{
+	& label{ margin-bottom:8px;}
+}
+}
+.toggleswichbtn .ms-Toggle-innerContainer{
+	position: relative;
+	& button{ width: 85px;
+		& span{ z-index: 1;}
+	}
+	& label{ position: absolute; color: #FFF; margin-left: 20px; margin-right: 20px; text-align: center; cursor: pointer; width: calc(100% - 40px);}
+}
+.switchList button:hover{ background-color: green;}
+.switchList button[aria-checked="false"]{background-color: green;
+	& span{ background-color: #FFF;}
+}
