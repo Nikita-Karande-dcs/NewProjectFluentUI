@@ -394,136 +394,118 @@ export default function HomeListData({
         </Stack.Item>
       </Stack>
 
-			<div className={contentStyles.body}>
-				<Pivot
-					className="pivotControl"
-					selectedKey={String(selectedKey)}
-					onLinkClick={(contact: any) => {
-						setSelectedKey(contact.props.itemKey);
-					}}
-					style={{ position: 'relative' }}>
-					{/* Action Tab */}
-					<PivotItem headerText='Action'>
-						<div className="pt-10 pb-10">
-							<Stack.Item
-								className={
-									fullScreen
-										? contentStyles.tileListContentFull
-										: contentStyles.tileListContent
-								}>
-								<div
-									className={
-										themeName === 'Light'
-											? 'customScrollbar'
-											: 'customScrollbarDark'
-									}>
-									<Stack wrap horizontal>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}>
-											<Stack.Item
-												className={`${classNames.stackItemLabelStyles} ml-5`}
-												style={neutralColorsGray100(myThemeContext)}>
-												<Toggle
-													label="New"
-													checked={isnew}
-													onChange={handleNewToggleChange}
-												/>
-												<Toggle
-													label="Amend"
-												/>
-											</Stack.Item>
-										</Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}>
-											<Stack.Item
-												className={`${classNames.stackItemLabelStyles} ml-5`}
-												style={neutralColorsGray100(myThemeContext)}>
-												Requester
-											</Stack.Item>
-											<Stack.Item className={classNames.stackItemValueStyles}>
-												<RhfTextField
-													control={control}
-													name="Requester"
-													styles={textFieldStyle} />
-											</Stack.Item>
-										</Stack>
-
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}></Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}>
-											<Stack.Item
-												className={`${classNames.stackItemLabelStyles} ml-5`}
-												style={neutralColorsGray100(myThemeContext)}>
-												New User Details
-											</Stack.Item>
-										</Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}></Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}></Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}>
-											<Stack.Item
-												className={`${classNames.stackItemLabelStyles} ml-5`}
-												style={neutralColorsGray100(myThemeContext)}>
-												First Name
-											</Stack.Item>
-											<Stack.Item className={classNames.stackItemValueStyles}>
-												<RhfTextField
-													control={control}
-													name="FirstName"
-													styles={textFieldStyle}
-												/>
-											</Stack.Item>
-										</Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}>
-											<Stack.Item
-												className={`${classNames.stackItemLabelStyles} ml-5`}
-												style={neutralColorsGray100(myThemeContext)}>
-												Start Date
-											</Stack.Item>
-											<Stack.Item className={classNames.stackItemValueStyles}>
-											<DatePicker
-											id="fromDate"
-											placeholder='fromDate'
-											isMonthPickerVisible={true}
-											style={{ width: '150px', marginTop: '5px', color: 'red' }}
-											// styles={{
-											// 	callout: {
-											// 		background: 'red !important',
-											// 	},
-											// }}
-											calloutProps={{
-												className: `${
-													themeName == 'Light'
-														? 'datePickerCalloutLight'
-														: 'datePickerCalloutDark'
-												}`,
-											}}
-											// styles={datePickerStyle(myThemeContext)}
-											// value={transactionFilter?.fromDate}
-											// onSelectDate={
-											// 	fromDateSelect as (
-											// 		date: Date | null | undefined
-											// 	) => void
-											// }
-											></DatePicker>
-											</Stack.Item>
-										</Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}>
-											<Stack.Item
-												className={`${classNames.stackItemLabelStyles} ml-5`}
-												style={neutralColorsGray100(myThemeContext)}>
-												Last Name
-											</Stack.Item>
-											<Stack.Item className={classNames.stackItemValueStyles}>
-												<RhfTextField
-													control={control}
-													name="LastName"
-													styles={textFieldStyle}
-												/>
-											</Stack.Item>
-										</Stack>
-										<Stack tokens={Gap5Token} styles={sectionStackTokens}>
-											<Stack.Item
-												className={`${classNames.stackItemLabelStyles} ml-5`}
-												style={neutralColorsGray100(myThemeContext)}>
-												Office
-											</Stack.Item>
+      <div className={contentStyles.body}>
+        <Pivot
+          className="pivotControl"
+          selectedKey={String(selectedKey)}
+          onLinkClick={(contact: any) => {
+            setSelectedKey(contact.props.itemKey);
+          }}
+          style={{ position: 'relative' }}>
+          {/* Action Tab */}
+          <PivotItem headerText='Action'>
+            <div className="pt-10 pb-10">
+              <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
+                <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
+                  <div>
+                    <div className='pagesubtitle'>
+                      <h2>{'Action'}</h2>
+                    </div>
+                    <div>
+                      <div className="ms-Grid" dir="ltr">
+                        <div className="ms-Grid-row">
+                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                            <div className="switchList">
+                              <Stack className={`ml-5 toggleswichbtn`}> <Toggle inlineLabel onText="New" offText="Amend" defaultChecked onChange={_onChange} /> </Stack>
+                            </div>
+                          </div>
+                          <div className="ms-Grid-col ms-sm6 ms-md6">
+                            <div>
+                              <Stack.Item className={`${classNames.stackItemLabelStyles} ml-5`} style={neutralColorsGray100(myThemeContext)}>
+                                Requester
+                              </Stack.Item>
+                              <Stack.Item>
+                                <RhfTextField control={control} name="Requester" styles={textFieldStyle} />
+                              </Stack.Item>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-12">
+                      <h3>New User Details</h3>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <Stack tokens={Gap5Token} styles={sectionStackTokens}>
+                            <Stack.Item
+                              className={`${classNames.stackItemLabelStyles} ml-5`}
+                              style={neutralColorsGray100(myThemeContext)}>
+                              First Name
+                            </Stack.Item>
+                            <Stack.Item className={classNames.stackItemValueStyles}>
+                              <RhfTextField
+                                control={control}
+                                name="FirstName"
+                                styles={textFieldStyle}
+                              />
+                            </Stack.Item>
+                          </Stack>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="formGroup">
+                            <Stack.Item className={`${classNames.stackItemLabelStyles} ml-5`} style={neutralColorsGray100(myThemeContext)}> Start Date </Stack.Item>
+                            <Stack.Item className={classNames.stackItemValueStyles}>
+                              <DatePicker
+                                id="fromDate"
+                                placeholder='fromDate'
+                                isMonthPickerVisible={true}
+                                style={{ marginTop: '5px', color: 'red' }}
+                                // styles={{
+                                // 	callout: {
+                                // 		background: 'red !important',
+                                // 	},
+                                // }}
+                                calloutProps={{
+                                  className: `${themeName == 'Light'
+                                    ? 'datePickerCalloutLight'
+                                    : 'datePickerCalloutDark'
+                                    }`,
+                                }}
+                              // styles={datePickerStyle(myThemeContext)}
+                              // value={transactionFilter?.fromDate}
+                              // onSelectDate={
+                              // 	fromDateSelect as (
+                              // 		date: Date | null | undefined
+                              // 	) => void
+                              // }
+                              ></DatePicker>
+                            </Stack.Item>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <Stack wrap horizontal>
+                    <Stack tokens={Gap5Token} styles={sectionStackTokens}>
+                      <Stack.Item
+                        className={`${classNames.stackItemLabelStyles} ml-5`}
+                        style={neutralColorsGray100(myThemeContext)}>
+                        Last Name
+                      </Stack.Item>
+                      <Stack.Item className={classNames.stackItemValueStyles}>
+                        <RhfTextField
+                          control={control}
+                          name="LastName"
+                          styles={textFieldStyle}
+                        />
+                      </Stack.Item>
+                    </Stack>
+                    <Stack tokens={Gap5Token} styles={sectionStackTokens}>
+                      <Stack.Item
+                        className={`${classNames.stackItemLabelStyles} ml-5`}
+                        style={neutralColorsGray100(myThemeContext)}>
+                        Office
+                      </Stack.Item>
 
                       <Stack.Item className={classNames.stackItemValueStyles}>
                         <RhfDropdown
