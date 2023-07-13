@@ -10,6 +10,7 @@ import { darkTheme, lightTheme } from './themes/themes';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import Dashboard from './pages/Dashboard';
 import HomeDetailModal from './components/Home/HomeDetailModal';
+import UserLogin from './pages/UserLogin';
 initializeIcons();
 const Main = () => {
 	const [themeName, setTheme] = React.useState<any>(
@@ -38,7 +39,6 @@ const Main = () => {
 					<Route element={<App />}>
 						<Route path="/home" element={<Home />} />
 						<Route path="/contact" element={<Contact />} />
-						<Route path="/" element={<Home />} />
 						<Route path="/dashboard" element={<Dashboard />} />
 						<Route path="*" element={<NotFoundPage />} />
 						<Route
@@ -47,6 +47,7 @@ const Main = () => {
 								}
 							/>
 					</Route>
+					<Route path={'/'} element={<UserLogin />} />
 				</Routes>
 			</ThemeContext.Provider>
 		</ThemeProvider >
