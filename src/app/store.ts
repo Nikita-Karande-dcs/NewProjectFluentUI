@@ -4,10 +4,12 @@ import {
 	Action,
 } from '@reduxjs/toolkit';
 import appSettingReducer from '../app/appSlice';
+import userLoginReducer from '../components/User/UserLoginSlice';
 
 export const store = configureStore({
 	reducer: {
-		appSetting: appSettingReducer
+		appSetting: appSettingReducer,
+		userLogin: userLoginReducer,
 	},
 	devTools: true,
 });
