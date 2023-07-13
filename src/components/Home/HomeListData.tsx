@@ -80,287 +80,73 @@ export default function HomeListData({
   );
 
   const toggleDataAmerica = [
-    {
-      id: 1,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'Argentina',
-    },
-    {
-      id: 2,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Brazil',
-    },
-    {
-      id: 3,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'NADS',
-    },
-    {
-      id: 4,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'VIO',
-    },
-
+    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Argentina', },
+    { id: 2, label: 'Brazil', },
+    { id: 3, label: 'NADS', },
+    { id: 4, label: 'VIO', },
   ];
 
   const toggleBtnEurope = [
-    {
-      id: 1,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'Czech',
-    },
-    {
-      id: 2,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Denmark',
-    },
-    {
-      id: 3,
-      // checked: isnew,
-      // onChange: handleNewToggleChange,
-      label: 'Germany',
-    },
-    {
-      id: 4,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Spain',
-    },
-    {
-      id: 5,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'France',
-    },
-    {
-      id: 6,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Greece',
-    },
-    {
-      id: 7,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'Hungary',
-    },
-    {
-      id: 8,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Italy',
-    },
-    {
-      id: 9,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Netherland',
-    },
-    {
-      id: 10,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'United Kingdom',
-    },
-    {
-      id: 11,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Beam (Non-extreme reach company)',
-    },
-    {
-      id: 12,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Spotgate (Non-extreme reach company)',
-    },
+    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Czech', },
+    { id: 2, label: 'Denmark', },
+    { id: 3, label: 'Germany', },
+    { id: 4, label: 'Spain', },
+    { id: 5, label: 'France', },
+    { id: 6, label: 'Greece', },
+    { id: 7, label: 'Hungary', },
+    { id: 8, label: 'Italy', },
+    { id: 9, label: 'Netherland', },
+    { id: 10, label: 'United Kingdom', },
+    { id: 11, label: 'Beam (Non-extreme reach company)', },
+    { id: 12, label: 'Spotgate (Non-extreme reach company)', },
   ];
 
   const toggleDataMena = [
-    {
-      id: 1,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'Mena',
-    },
-    {
-      id: 2,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Cloud -EG (Non-extreme reach company)',
-    },
+    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Mena', },
+    { id: 2, label: 'Cloud -EG (Non-extreme reach company)', },
   ];
 
   const toggleBtnAsiaPacific = [
-    {
-      id: 1,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'China',
-    },
-    {
-      id: 2,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'India',
-    },
-    {
-      id: 3,
-      // checked: isnew,
-      // onChange: handleNewToggleChange,
-      label: 'Japan',
-    },
-    {
-      id: 4,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Malaysia',
-    },
-    {
-      id: 5,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Singapore',
-    },
-    {
-      id: 6,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Thailand',
-    },
-    {
-      id: 7,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'Australia',
-    },
-    {
-      id: 8,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'New Zealand',
-    }
+    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'China', },
+    { id: 2, label: 'India', },
+    { id: 3, label: 'Japan', },
+    { id: 4, label: 'Malaysia', },
+    { id: 5, label: 'Singapore', },
+    { id: 6, label: 'Thailand', },
+    { id: 7, label: 'Australia', },
+    { id: 8, label: 'New Zealand', }
   ];
 
   const toggleBtnFinanceManagement = [
-    {
-      id: 1,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'Adstream Holdings Pty Limited',
-    },
-    {
-      id: 2,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Dormant Cos',
-    },
-    {
-      id: 3,
-      // checked: isnew,
-      // onChange: handleNewToggleChange,
-      label: 'Adjustments',
-    },
-    {
-      id: 4,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Hong Kong (Non-Trading)',
-    },
-    {
-      id: 5,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'The Traffic Bureae Limited (Historical)',
-    },
-    {
-      id: 6,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Citizen Ltd(UK) (Non-trading)',
-    },
-    {
-      id: 7,
-      // checked: isnew,
-      // onChange: handleNewToggleChange,
-      label: 'Portland PMS Ltd (Non-Trading)',
-    },
-    {
-      id: 8,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Portland PMS Ltd (Non-Trading)',
-    },
-    {
-      id: 9,
-      // checked: isnew,
-      // onChange: handleNewToggleChange,
-      label: 'Portland PMS Ltd (Non-Trading)',
-    },
-    {
-      id: 10,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Pelagon Limited (Non-Trading)',
-    }
+    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Adstream Holdings Pty Limited', },
+    { id: 2, label: 'Dormant Cos', },
+    { id: 3, label: 'Adjustments', },
+    { id: 4, label: 'Hong Kong (Non-Trading)', },
+    { id: 5, label: 'The Traffic Bureae Limited (Historical)', },
+    { id: 6, label: 'Citizen Ltd(UK) (Non-trading)', },
+    { id: 7, label: 'Portland PMS Ltd (Non-Trading)', },
+    { id: 8, label: 'Portland PMS Ltd (Non-Trading)', },
+    { id: 9, label: 'Portland PMS Ltd (Non-Trading)', },
+    { id: 10, label: 'Pelagon Limited (Non-Trading)', }
   ];
 
   const toggleDataFinance = [
-    {
-      id: 1,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'SAP Business One(Client access)',
-    },
-    {
-      id: 2,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Sharperlight Reporting - Finance user',
-    },
-    {
-      id: 3,
-      checked: isnew,
-      onChange: handleNewToggleChange,
-      label: 'Data Transfer Workbench (DTW)',
-    },
-    {
-      id: 4,
-      // checked: isNew,
-      // onChange: handleNewToggleChange,
-      label: 'Sharperlight Reporting - Web user',
-    },
+    { id: 1, label: 'SAP Business One(Client access)', checked: isnew, onChange: handleNewToggleChange, },
+    { id: 2, label: 'SData Transfer Workbench (DTW)', },
   ];
-
+  const toggleDataReporting = [
+    { id: 1, label: 'Sharperlight Reporting - Finance user', checked: isnew, onChange: handleNewToggleChange, },
+    { id: 2, label: 'Sharperlight Reporting - Web user', },
+  ];
   const toggleBtnSAPWEBPORTAL = [
     { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Open Orders', },
-    {
-      id: 2, // checked: isNew, // onChange: handleNewToggleChange, label: 'Rate Cards',
-    },
-    {
-      id: 3, // checked: isnew, // onChange: handleNewToggleChange, label: 'Invoice Request',
-    },
-    {
-      id: 4, // checked: isNew, // onChange: handleNewToggleChange, label: 'Credit Note Request',
-    },
-    {
-      id: 5, // checked: isNew, // onChange: handleNewToggleChange, label: 'Account Manager',
-    },
-    {
-      id: 6, // checked: isNew, // onChange: handleNewToggleChange, label: 'Advertiser Manager',
-    },
-    {
-      id: 7, checked: isnew, onChange: handleNewToggleChange, label: 'Quotation Module',
-    },
-    {
-      id: 8, // checked: isNew, // onChange: handleNewToggleChange, label: 'Purchase Order Request ',
-    }
+    { id: 2, label: 'Rate Cards', },
+    { id: 3, label: 'Invoice Request', },
+    { id: 4, label: 'Credit Note Request', },
+    { id: 5, label: 'Account Manager', },
+    { id: 6, label: 'Advertiser Manager', },
+    { id: 7, label: 'Quotation Module', },
+    { id: 8, label: 'Purchase Order Request ', }
   ];
 
   const _items = [
@@ -382,39 +168,16 @@ export default function HomeListData({
 
 
   return (
-    <div
-      style={{
-        width: '100%',
-        height: 'calc(100vh - 10.5rem)',
-      }}>
+    <div style={{ width: '100%', height: 'calc(100vh - 10.5rem)', }}>
       <Stack className={contentStyles.header} horizontal>
         <Stack.Item grow={1}>
           <Stack horizontal>
-            <Stack.Item
-              style={{
-                marginLeft: '10px',
-              }}>
-              <Persona
-                hidePersonaDetails={true}
-                size={PersonaSize.size100}
-              />
+            <Stack.Item style={{ marginLeft: '10px', }}>
+              <Persona hidePersonaDetails={true} size={PersonaSize.size100} />
             </Stack.Item>
-            <Stack.Item
-              style={{
-                marginLeft: '5px',
-                marginTop: '3px',
-                marginBottom: '5px',
-              }}
-              grow={1}>
+            <Stack.Item style={{ marginLeft: '5px', marginTop: '3px', marginBottom: '5px', }} grow={1}>
               <span>
-                <div
-                  style={{
-                    visibility: 'hidden',
-                    height: '0px',
-                    width: '0px',
-                  }}>
-                  <input type="text" />
-                </div>
+                <div style={{ visibility: 'hidden', height: '0px', width: '0px', }}> <input type="text" /> </div>
                 <h1>{data?.name}</h1>
               </span>
             </Stack.Item>
@@ -482,166 +245,104 @@ export default function HomeListData({
               <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
                 <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
                   <div>
-                    <div className='pagesubtitle'>
-                      <h2>{'Action'}</h2>
-                    </div>
-                    <div>
-                      <div className="ms-Grid" dir="ltr">
-                        <div className="ms-Grid-row">
-                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
-                            <div className="switchList">
-                              <Stack className={`ml-5 toggleswichbtn`}> <Toggle inlineLabel onText="New" offText="Amend" defaultChecked onChange={_onChange} /> </Stack>
-                            </div>
+                    <div className="ms-Grid" dir="ltr">
+                      <div className="ms-Grid-row">
+                        <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                          <div className='pagesubtitle'>
+                            <h2>{'Action'}</h2>
                           </div>
-                          <div className="ms-Grid-col ms-sm6 ms-md6">
-                            <div>
-                              <Stack.Item className={`${classNames.stackItemLabelStyles} ml-5`} style={neutralColorsGray100(myThemeContext)}>
-                                Requester
-                              </Stack.Item>
-                              <Stack.Item>
-                                <RhfTextField control={control} name="Requester" styles={textFieldStyle} />
-                              </Stack.Item>
-                            </div>
+                          <div className="switchList">
+                            <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="New" offText="Amend" defaultChecked onChange={_onChange} /> </Stack>
+                          </div>
+                        </div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Requester </label>
+                            <RhfTextField control={control} name="Requester" styles={textFieldStyle} />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-12">
-                      <h3>New User Details</h3>
-                      <div className="row">
-                        <div className="col-md-6">
-                          <Stack tokens={Gap5Token} styles={sectionStackTokens}>
-                            <Stack.Item
-                              className={`${classNames.stackItemLabelStyles} ml-5`}
-                              style={neutralColorsGray100(myThemeContext)}>
-                              First Name
-                            </Stack.Item>
-                            <Stack.Item className={classNames.stackItemValueStyles}>
-                              <RhfTextField
-                                control={control}
-                                name="FirstName"
-                                styles={textFieldStyle}
-                              />
-                            </Stack.Item>
-                          </Stack>
+                    <div className="ms-Grid" dir="ltr">
+                      <div className="ms-Grid-row">
+                        <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                          <div className='pagesubtitle'>
+                            <h3>{'New User Details'}</h3>
+                          </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className={`clearBoth`}></div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> First Name </label>
+                            <RhfTextField control={control} name="FirstName" styles={textFieldStyle} />
+                          </div>
+                        </div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Last Name </label>
+                            <RhfTextField control={control} name="LastName" styles={textFieldStyle} />
+                          </div>
+                        </div>
+                        <div className={`clearBoth`}></div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Email </label>
+                            <RhfTextField control={control} name="Email" styles={textFieldStyle} />
+                          </div>
+                        </div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className="formGroup">
-                            <Stack.Item className={`${classNames.stackItemLabelStyles} ml-5`} style={neutralColorsGray100(myThemeContext)}> Start Date </Stack.Item>
-                            <Stack.Item className={classNames.stackItemValueStyles}>
-                              <DatePicker
-                                id="fromDate"
-                                placeholder='fromDate'
-                                isMonthPickerVisible={true}
-                                style={{ marginTop: '5px', color: 'red' }}
-                                // styles={{
-                                // 	callout: {
-                                // 		background: 'red !important',
-                                // 	},
-                                // }}
-                                calloutProps={{
-                                  className: `${themeName == 'Light'
-                                    ? 'datePickerCalloutLight'
-                                    : 'datePickerCalloutDark'
-                                    }`,
-                                }}
-                              // styles={datePickerStyle(myThemeContext)}
-                              // value={transactionFilter?.fromDate}
-                              // onSelectDate={
-                              // 	fromDateSelect as (
-                              // 		date: Date | null | undefined
-                              // 	) => void
-                              // }
-                              ></DatePicker>
-                            </Stack.Item>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Start Date </label>
+                            <DatePicker
+                              id="fromDate"
+                              placeholder='fromDate'
+                              isMonthPickerVisible={true}
+                              style={{ marginTop: '5px', color: 'red' }}
+                              // styles={{
+                              // 	callout: {
+                              // 		background: 'red !important',
+                              // 	},
+                              // }}
+                              calloutProps={{
+                                className: `${themeName == 'Light'
+                                  ? 'datePickerCalloutLight'
+                                  : 'datePickerCalloutDark'
+                                  }`,
+                              }}
+                            // styles={datePickerStyle(myThemeContext)}
+                            // value={transactionFilter?.fromDate}
+                            // onSelectDate={
+                            // 	fromDateSelect as (
+                            // 		date: Date | null | undefined
+                            // 	) => void
+                            // }
+                            >
+                            </DatePicker>
+                          </div>
+                        </div>
+                        <div className={`clearBoth`}></div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Office </label>
+                            <RhfDropdown options={options} control={control} name="Office" placeholder='select a value' styles={dropwDownFieldStyle} />
+                          </div>
+                        </div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Line Manager </label>
+                            <RhfTextField control={control} name="LineManager" styles={textFieldStyle} />
+                          </div>
+                        </div>
+                        <div className={`clearBoth`}></div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Permission Group </label>
+                            <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='select a value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <Stack wrap horizontal>
-                    <Stack tokens={Gap5Token} styles={sectionStackTokens}>
-                      <Stack.Item
-                        className={`${classNames.stackItemLabelStyles} ml-5`}
-                        style={neutralColorsGray100(myThemeContext)}>
-                        Last Name
-                      </Stack.Item>
-                      <Stack.Item className={classNames.stackItemValueStyles}>
-                        <RhfTextField
-                          control={control}
-                          name="LastName"
-                          styles={textFieldStyle}
-                        />
-                      </Stack.Item>
-                    </Stack>
-                    <Stack tokens={Gap5Token} styles={sectionStackTokens}>
-                      <Stack.Item
-                        className={`${classNames.stackItemLabelStyles} ml-5`}
-                        style={neutralColorsGray100(myThemeContext)}>
-                        Office
-                      </Stack.Item>
-
-                      <Stack.Item className={classNames.stackItemValueStyles}>
-                        <RhfDropdown
-                          options={options}
-                          control={control}
-                          name="Office"
-                          placeholder='select a value'
-                          styles={dropwDownFieldStyle}
-                        />
-                      </Stack.Item>
-                    </Stack>
-                    <Stack tokens={Gap5Token} styles={sectionStackTokens}>
-                      <Stack.Item
-                        className={`${classNames.stackItemLabelStyles} ml-5`}
-                        style={neutralColorsGray100(myThemeContext)}>
-                        Email
-                      </Stack.Item>
-                      <Stack.Item className={classNames.stackItemValueStyles}>
-                        <RhfTextField
-                          control={control}
-                          name="Email"
-                          styles={textFieldStyle}
-                        />
-                      </Stack.Item>
-                    </Stack>
-                    <Stack
-                      tokens={Gap5Token}
-                      styles={sectionStackTokens}
-                    >
-                      <Stack.Item
-                        className={`${classNames.stackItemLabelStyles} ml-5`}
-                        style={neutralColorsGray100(myThemeContext)}>
-                        Line Manager
-                      </Stack.Item>
-                      <Stack.Item className={classNames.stackItemValueStyles}>
-                        <RhfTextField
-                          control={control}
-                          name="LineManager"
-                          styles={textFieldStyle}
-                        />
-                      </Stack.Item>
-                    </Stack>
-                    <Stack
-                      tokens={Gap5Token}
-                      styles={sectionStackTokens}
-                    >
-                      <Stack.Item
-                        className={`${classNames.stackItemLabelStyles} ml-5`}
-                        style={neutralColorsGray100(myThemeContext)}>
-                        Permission Group
-                      </Stack.Item>
-                      <Stack.Item className={classNames.stackItemValueStyles}>
-                        <RhfDropdown
-                          options={options2}
-                          control={control}
-                          name="PermissionGroup"
-                          placeholder='select a value'
-                          styles={dropwDownFieldStyle}
-                        />
-                      </Stack.Item>
-                    </Stack>
-                  </Stack>
                 </div>
               </Stack.Item>
             </div>
@@ -649,106 +350,79 @@ export default function HomeListData({
           {/* Action Tab */}
 
           {/* Market Access */}
-          <PivotItem
-            headerText={
-              'Market Access'
-            }
-            itemKey="1">
+          <PivotItem headerText={'Market Access'} itemKey="1">
             <div className="pt-10 pb-10">
-
-              <Stack.Item
-                className={
-                  fullScreen
-                    ? contentStyles.tileListContentFull
-                    : contentStyles.tileListContent
-                }>
-                <div
-                  className={
-                    themeName === 'Light'
-                      ? 'customScrollbar'
-                      : 'customScrollbarDark'
-                  }>
+              <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
+                <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
                   <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">
-
                       <>
                         <Stack wrap horizontal verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>America</h3>
-
-                          {toggleDataAmerica.map((data) => (
-                            <div key={data.id} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Toggle
-                                style={{ marginTop: '13px', marginRight: '10px' }}
-                                checked={data.checked}
-                                onChange={data.onChange}
-                              />
-                              <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                                className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                            <div className='pagesubtitle'>
+                              <h3>{'America'}</h3>
                             </div>
-                          ))}
-                        </Stack>
-                        <Stack wrap horizontal verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>Europe</h3>
-
-                          {toggleBtnEurope.map((data) => (
-                            <div key={data.id} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Toggle
-                                style={{ marginTop: '13px', marginRight: '10px' }}
-                                checked={data.checked}
-                                onChange={data.onChange}
-                              />
-                              <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                                className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                            <div className={`toggleswichList`}>
+                              {toggleDataAmerica.map((data) => (
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </Stack>
-
-                        <Stack wrap horizontal verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>Mena</h3>
-
-                          {toggleDataMena.map((data) => (
-                            <div key={data.id} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Toggle
-                                style={{ marginTop: '13px', marginRight: '10px' }}
-                                checked={data.checked}
-                                onChange={data.onChange}
-                              />
-                              <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                                className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                          </div>
+                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                            <div className='pagesubtitle'>
+                              <h3>{'Europe'}</h3>
                             </div>
-                          ))}
-                        </Stack>
-
-                        <Stack wrap horizontal verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>Asia-Pacific</h3>
-
-                          {toggleBtnAsiaPacific.map((data) => (
-                            <div key={data.id} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Toggle
-                                style={{ marginTop: '13px', marginRight: '10px' }}
-                                checked={data.checked}
-                                onChange={data.onChange}
-                              />
-                              <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                                className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                            <div className={`toggleswichList`}>
+                              {toggleBtnEurope.map((data) => (
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </Stack>
-
-                        <Stack wrap horizontal verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>Finance Management/Dormant/Non Trading Companies</h3>
-
-                          {toggleBtnFinanceManagement.map((data) => (
-                            <div key={data.id} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Toggle
-                                style={{ marginTop: '13px', marginRight: '10px' }}
-                                checked={data.checked}
-                                onChange={data.onChange}
-                              />
-                              <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                                className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                          </div>
+                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                            <div className='pagesubtitle'>
+                              <h3>{'Mena'}</h3>
                             </div>
-                          ))}
+                            <div className={`toggleswichList`}>
+                              {toggleDataMena.map((data) => (
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                              <div className='pagesubtitle'>
+                                <h3>{'Asia-Pacific'}</h3>
+                              </div>
+                              <div className={`toggleswichList`}>
+                                {toggleBtnAsiaPacific.map((data) => (
+                                  <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                    <Toggle checked={data.checked} onChange={data.onChange} />
+                                    <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                              <div className='pagesubtitle'>
+                                <h3>{'Finance Management/Dormant/Non Trading Companies'}</h3>
+                              </div>
+                              <div className={`toggleswichList`}>
+                                {toggleBtnFinanceManagement.map((data) => (
+                                  <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                    <Toggle checked={data.checked} onChange={data.onChange} />
+                                    <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
                         </Stack>
                       </>
                     </div>
@@ -760,111 +434,87 @@ export default function HomeListData({
           {/* Market Access */}
 
           {/* Access */}
-
-          <PivotItem
-            headerText='Access'
-            itemKey="2">
+          <PivotItem headerText='Access' itemKey="2">
             <div className="pt-10 pb-10">
-              <Stack.Item
-                className={
-                  fullScreen
-                    ? contentStyles.tileListContentFull
-                    : contentStyles.tileListContent
-                }>
-                <div
-                  className={
-                    themeName === 'Light'
-                      ? 'customScrollbar'
-                      : 'customScrollbarDark'
-                  }>
+              <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
+                <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
                   <div className="ms-Grid" dir="ltr">
                     <div className="ms-Grid-row">
-
                       <>
                         <Stack wrap horizontal verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>Finance</h3>
-
-                          {toggleDataFinance.map((data) => (
-                            <div key={data.id} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Toggle
-                                style={{ marginTop: '13px', marginRight: '10px' }}
-                                checked={data.checked}
-                                onChange={data.onChange}
-                              />
-                              <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                                className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                            <div className='pagesubtitle'>
+                              <h3>{'Finance'}</h3>
                             </div>
-                          ))}
-                        </Stack>
-
-                        <Stack wrap verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>SAP WEB PORTAL</h3>
-
-                          {toggleBtnSAPWEBPORTAL.map((data) => (
-                            <div key={data.id} style={{ display: 'flex', alignItems: 'center' }}>
-                              <Toggle
-                                style={{ marginTop: '13px', marginRight: '10px' }}
-                                checked={data.checked}
-                                onChange={data.onChange}
-                              />
-                              <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                                className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                            <div className={`toggleswichList`}>
+                              {toggleDataFinance.map((data) => (
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          </div>
+                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                            <div className='pagesubtitle'>
+                              <h3>{'Reporting'}</h3>
+                            </div>
+                            <div className={`toggleswichList`}>
+                              {toggleDataReporting.map((data) => (
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="ms-Grid-col ms-sm12 mt-10 mb-10">
+                            <div className='pagesubtitle'>
+                              <h3>{'SAP WEB PORTAL'}</h3>
+                            </div>
+                            <div className={`toggleswichList`}>
+                              {toggleBtnSAPWEBPORTAL.map((data) => (
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
+                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className={`clearBoth`}></div>
+                          <div className="ms-Grid-col ms-lg12 ms-xl6">
+                            <div className={`formGroup`}>
+                              <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Web Approving Manager</label>
+                              <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='select a value' styles={dropwDownFieldStyle} />
+                            </div>
+                          </div>
+                          <div className="ms-Grid-col ms-lg12 ms-xl6">
+                            <div className={`formGroup`}>
+                              <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Training</label>
+                              <div className="switchList">
+                                <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="Yes" offText="No" defaultChecked onChange={_onChange} /> </Stack>
+                              </div>
+                            </div>
+                          </div>
+                          <div className={`clearBoth`}></div>
+                          <div className="ms-Grid-col ms-lg12 ms-xl6">
+                            <div className={`formGroup`}>
+                              <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>if yes, any requirement?</label>
+                              <RhfTextField control={control} name="requirement" styles={textFieldStyle} />
+                            </div>
+                          </div>
+                          <div className="ms-Grid-col ms-lg12 ms-xl6">
+                            <div className={`formGroup`}>
+                              <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Comment</label>
+                              <RhfTextField control={control} name="Comment" styles={textFieldStyle} />
+                            </div>
+                          </div>
+                          <div className="ms-Grid-col ms-lg12 ms-x12">
+                            <div className={`text-right`}>
+                              <PrimaryButton className={'mb-20'} text="Submit" />
+                            </div>
+                          </div>
                         </Stack>
-
-                        <Stack
-                          tokens={Gap5Token}
-                          styles={sectionStackTokens}
-                        >
-                          <Label style={{ marginRight: '40px', alignContent: 'center' }}
-                            className={`${classNames.stackItemLabelStyles} ml-5`}>Web Approving Manager</Label>
-                          <Stack.Item className={classNames.stackItemValueStyles}>
-                            <RhfDropdown
-                              options={options2}
-                              control={control}
-                              name="PermissionGroup"
-                              placeholder='select a value'
-                              styles={dropwDownFieldStyle}
-                            />
-                          </Stack.Item>
-                        </Stack>
-                        <Stack wrap horizontal verticalAlign="center">
-                          <h3 style={{ marginRight: "10px" }}>Training</h3>
-
-                          <Toggle
-                            style={{ marginTop: "13px", marginRight: "10px" }}
-                          />
-                          <Label style={{ marginRight: "40px", alignContent: "center" }}>Yes</Label>
-
-                          <Toggle
-                            style={{ marginTop: "13px", marginRight: "10px" }}
-                          />
-                          <Label style={{ marginRight: "40px", alignContent: "center" }}>No</Label>
-                        </Stack>
-                        <h5>if yes, any requirement?</h5>
-                        <Stack
-                          tokens={Gap5Token}
-                          styles={sectionStackTokens}
-                        >
-                          <RhfTextField
-                            control={control}
-                            name="requirement"
-                            styles={textFieldStyle}
-                          />
-                        </Stack>
-                        <h5>Comment</h5>
-                        <Stack
-                          tokens={Gap5Token}
-                        >
-                          <RhfTextField
-                            control={control}
-                            name="Comment"
-                            styles={textFieldStyle}
-                          />
-                        </Stack>
-                        <PrimaryButton text="Submit"
-                        />
                       </>
                     </div>
                   </div>
@@ -873,8 +523,8 @@ export default function HomeListData({
             </div>
           </PivotItem>
           {/* Access */}
-        </Pivot>
-      </div>
-    </div>
+        </Pivot >
+      </div >
+    </div >
   );
 }
