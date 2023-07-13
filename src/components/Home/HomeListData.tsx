@@ -21,13 +21,14 @@ import { contactDetailContentsCommandBarDiv, contactDetailContentsiconButtonStyl
 import { Gap5Token, }
   from '../../styles/SharedStyles';
 import { useTheme } from '../../Context/ThemeContext';
+
 import { dropwDownFieldStyle, textFieldStyle, }
   from '../shared/CTextField';
 import { RhfTextField } from '../shared/RhfTextField';
 import { RhfDropdown } from '../shared/RhfDropdown';
 // const stackTokens: IStackTokens = { childrenGap: 10 };
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import { useBoolean } from '@fluentui/react-hooks';
 function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
 }
@@ -166,6 +167,8 @@ export default function HomeListData({
     history(`/contact/new`, { state: { background: location } });
   };
 
+  const [showManagerInformationAction, { toggle: toggleShowManagerInformationAction }] = useBoolean(false);
+  const [showManagerInformationAccess, { toggle: toggleShowManagerInformationAccess }] = useBoolean(false);
 
   return (
     <div style={{ width: '100%', height: 'calc(100vh - 10.5rem)', }}>
@@ -223,7 +226,6 @@ export default function HomeListData({
           onLinkClick={(contact: any) => {
             setSelectedKey(contact.props.itemKey);
           }}
-
           style={{ position: 'relative' }}>
           {/* Action Tab */}
           <PivotItem headerText='Action'>
@@ -239,9 +241,7 @@ export default function HomeListData({
                 </>
                 : null
             }
-
             <div className="pt-10 pb-10">
-
               <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
                 <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
                   <div>
@@ -277,7 +277,7 @@ export default function HomeListData({
                             <RhfTextField control={control} name="FirstName" styles={textFieldStyle} />
                           </div>
                         </div>
-                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                        <div className="ms-Grid-col ms-lg12 msRhfTextField-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Last Name </label>
                             <RhfTextField control={control} name="LastName" styles={textFieldStyle} />
@@ -324,22 +324,69 @@ export default function HomeListData({
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Office </label>
-                            <RhfDropdown options={options} control={control} name="Office" placeholder='select a value' styles={dropwDownFieldStyle} />
+                            <RhfDropdown options={options} control={control} name="Office" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
-                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Line Manager </label>
-                            <RhfTextField control={control} name="LineManager" styles={textFieldStyle} />
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Permission Group </label>
+                            <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className={`clearBoth`}></div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
-                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Permission Group </label>
-                            <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='select a value' styles={dropwDownFieldStyle} />
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Line Manager </label>
+                            <RhfDropdown options={options2} control={control} name="Line Manager" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
+                        <div className="ms-Grid-col ms-lg12 ms-xl6">
+                          <div className={`formGroup`}>
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Other</label>
+                            <div className="switchList">
+                              <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="Yes" offText="No" checked={showManagerInformationAction} onChange={toggleShowManagerInformationAction} /> </Stack>
+                            </div>
+                          </div>
+                        </div>
+                        <div className={`clearBoth`}></div>
+                        {showManagerInformationAction &&
+                          <div className="ms-Grid" dir="ltr">
+                            <div className="newManagerInformationSection" style={neutralColorsGray100(myThemeContext)}>
+                              <div className="ms-Grid-row">
+                                <div className="ms-Grid-col ms-lg12 ms-xl12">
+                                  <h3>New Manager information</h3>
+                                </div>
+                                <div className={`clearBoth`}></div>
+                                <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                  <div className={`formGroup`}>
+                                    <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> First Name </label>
+                                    <RhfTextField control={control} name="FirstNameother" styles={textFieldStyle} />
+                                  </div>
+                                </div>
+                                <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                  <div className={`formGroup`}>
+                                    <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Last Name </label>
+                                    <RhfTextField control={control} name="LastNameother" styles={textFieldStyle} />
+                                  </div>
+                                </div>
+                                <div className={`clearBoth`}></div>
+                                <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                  <div className={`formGroup`}>
+                                    <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Email </label>
+                                    <RhfTextField control={control} name="Emailother" styles={textFieldStyle} />
+                                  </div>
+                                </div>
+                                <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                  <div className={`formGroup`}>
+                                    <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Office </label>
+                                    <RhfDropdown options={options} control={control} name="Officeother" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                                  </div>
+                                </div>
+                                <div className={`clearBoth`}></div>
+                              </div>
+                            </div>
+                          </div>
+                        }
                       </div>
                     </div>
                   </div>
@@ -485,17 +532,73 @@ export default function HomeListData({
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
                             <div className={`formGroup`}>
                               <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Web Approving Manager</label>
-                              <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='select a value' styles={dropwDownFieldStyle} />
+                              <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                             </div>
                           </div>
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
-                            <div className={`formGroup`}>
-                              <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Training</label>
-                              <div className="switchList">
-                                <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="Yes" offText="No" defaultChecked onChange={_onChange} /> </Stack>
+                            <div className="ms-Grid" dir="ltr">
+                              <div className="ms-Grid-col ms-lg6">
+                                <div className={`formGroup`}>
+                                  <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Ohter</label>
+                                  <div className="switchList">
+                                    <Stack className={`toggleswichbtn`}>
+                                      <Toggle inlineLabel onText="Yes" offText="No" checked={showManagerInformationAccess} onChange={toggleShowManagerInformationAccess} />
+                                    </Stack>
+                                  </div>
+                                </div>
                               </div>
+                              <div className="ms-Grid-col ms-lg6">
+                                <div className={`formGroup`}>
+                                  <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Training</label>
+                                  <div className="switchList">
+                                    <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="Yes" offText="No" defaultChecked onChange={_onChange} /> </Stack>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={`clearBoth`}></div>
                             </div>
                           </div>
+                          <div className={`clearBoth`}></div>
+                          { showManagerInformationAccess &&
+                            <div className="ms-Grid-col ms-lg12 ms-xl12">
+                              <div className="ms-Grid" dir="ltr">
+                                <div className="newManagerInformationSection" style={neutralColorsGray100(myThemeContext)}>
+                                  <div className="ms-Grid-row">
+                                    <div className="ms-Grid-col ms-lg12 ms-xl12">
+                                      <h3>New Manager information</h3>
+                                    </div>
+                                    <div className={`clearBoth`}></div>
+                                    <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                      <div className={`formGroup`}>
+                                        <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> First Name </label>
+                                        <RhfTextField control={control} name="FirstNameaccess" styles={textFieldStyle} />
+                                      </div>
+                                    </div>
+                                    <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                      <div className={`formGroup`}>
+                                        <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Last Name </label>
+                                        <RhfTextField control={control} name="LastNameaccess" styles={textFieldStyle} />
+                                      </div>
+                                    </div>
+                                    <div className={`clearBoth`}></div>
+                                    <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                      <div className={`formGroup`}>
+                                        <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Email </label>
+                                        <RhfTextField control={control} name="Emailaccess" styles={textFieldStyle} />
+                                      </div>
+                                    </div>
+                                    <div className="ms-Grid-col ms-lg12 ms-xl6">
+                                      <div className={`formGroup`}>
+                                        <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Office </label>
+                                        <RhfDropdown options={options} control={control} name="Officeaccess" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                                      </div>
+                                    </div>
+                                    <div className={`clearBoth`}></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          }
                           <div className={`clearBoth`}></div>
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
                             <div className={`formGroup`}>
