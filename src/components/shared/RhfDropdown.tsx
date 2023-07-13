@@ -33,6 +33,11 @@ export const RhfDropdown: React.FunctionComponent<
 							props?.bindSubType(option?.key);
 						}
 					}}
+					styles={{
+						root: {
+							backgroundColor:'#FFF',
+						},
+					}}
 					onBlur={onBlur}
 					errorMessage={error && error.message}
 					defaultValue={undefined}
@@ -74,6 +79,7 @@ export const RhfDropdownWithClearButton: React.FunctionComponent<
 											root: {
 												color: 'rgb(96, 94, 92)',
 												paddingRight: '.7em',
+												
 												'&:hover': {
 													fontWeight: 800,
 												},

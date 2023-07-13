@@ -17,7 +17,7 @@ import {
 
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { contactDetailContentsCommandBarDiv, contactDetailContentsiconButtonStyles, neutralColorsGray100, themePrimaryOverFlowItems, } from '../../styles/ContactStyles';
+import { contactDetailContentsiconButtonStyles, neutralColorsGray100, themePrimaryOverFlowItems, } from '../../styles/ContactStyles';
 import { Gap5Token, }
   from '../../styles/SharedStyles';
 import { useTheme } from '../../Context/ThemeContext';
@@ -32,10 +32,6 @@ import { RhfDropdown } from '../shared/RhfDropdown';
 
 import { useBoolean } from '@fluentui/react-hooks';
 import { useCallback, useState } from 'react';
-
-
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useBoolean } from '@fluentui/react-hooks';
 
 function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
@@ -117,7 +113,7 @@ export default function HomeListData({
 
 
   const [toggleDataEurope, setToggleDataEurope] = useState([
-    { id: 1, checked:false,label: 'Czech' },
+    { id: 1, checked: false, label: 'Czech' },
     { id: 2, checked: false, label: 'Denmark' },
     { id: 3, checked: false, label: 'Germany' },
     { id: 4, checked: false, label: 'Spain' },
@@ -130,7 +126,7 @@ export default function HomeListData({
     { id: 11, checked: false, label: 'Beam (Non-extreme reach company)' },
     { id: 12, checked: false, label: 'Spotgate (Non-extreme reach company)' }
   ]);
-  
+
   const handleToggleChangeEurope = useCallback(
     (id: any) => {
       setToggleDataEurope((prevToggleData) => {
@@ -145,7 +141,7 @@ export default function HomeListData({
     },
     []
   );
-  
+
 
   const [toggleDataMena, setToggleDataMena] = useState([
     { id: 1, checked: false, label: 'Mena' },
@@ -153,7 +149,7 @@ export default function HomeListData({
   ]);
 
   const handleToggleChangeMena = useCallback(
-    (id:any) => {
+    (id: any) => {
       setToggleDataMena((prevToggleData) => {
         const updatedToggleData = prevToggleData.map((data) => {
           if (data.id === id) {
@@ -177,9 +173,9 @@ export default function HomeListData({
     { id: 7, checked: false, label: 'Australia' },
     { id: 8, checked: false, label: 'New Zealand' }
   ]);
-  
+
   const handleToggleChangeAsiaPacific = useCallback(
-    (id:any) => {
+    (id: any) => {
       setToggleDataAsiaPacific((prevToggleData) => {
         const updatedToggleData = prevToggleData.map((data) => {
           if (data.id === id) {
@@ -192,7 +188,7 @@ export default function HomeListData({
     },
     []
   );
-  
+
   const [toggleDataFinanceManagement, setToggleDataFinanceManagement] = useState([
     { id: 1, checked: false, label: 'Adstream Holdings Pty Limited' },
     { id: 2, checked: false, label: 'Dormant Cos' },
@@ -205,9 +201,9 @@ export default function HomeListData({
     { id: 9, checked: false, label: 'Portland PMS Ltd (Non-Trading)' },
     { id: 10, checked: false, label: 'Pelagon Limited (Non-Trading)' }
   ]);
-  
+
   const handleToggleChangeFinanceManagement = useCallback(
-    (id:any) => {
+    (id: any) => {
       setToggleDataFinanceManagement((prevToggleData) => {
         const updatedToggleData = prevToggleData.map((data) => {
           if (data.id === id) {
@@ -220,15 +216,15 @@ export default function HomeListData({
     },
     []
   );
-  
+
 
   const [toggleDataFinance, setToggleDataFinance] = useState([
-    { id: 1, label: 'SAP Business One(Client access)', checked: false},
-    { id: 2, label: 'SData Transfer Workbench (DTW)',checked: false }
+    { id: 1, label: 'SAP Business One(Client access)', checked: false },
+    { id: 2, label: 'SData Transfer Workbench (DTW)', checked: false }
   ]);
-  
+
   const handleToggleChangeFinance = useCallback(
-    (id:any) => {
+    (id: any) => {
       setToggleDataFinance((prevToggleData) => {
         const updatedToggleData = prevToggleData.map((data) => {
           if (data.id === id) {
@@ -241,14 +237,14 @@ export default function HomeListData({
     },
     []
   );
-  
+
   const [toggleDataReporting, setToggleDataReporting] = useState([
-    { id: 1, label: 'Sharperlight Reporting - Finance user', checked: false},
+    { id: 1, label: 'Sharperlight Reporting - Finance user', checked: false },
     { id: 2, label: 'Sharperlight Reporting - Web user', checked: false }
   ]);
-  
+
   const handleToggleChangeReporting = useCallback(
-    (id:any) => {
+    (id: any) => {
       setToggleDataReporting((prevToggleData) => {
         const updatedToggleData = prevToggleData.map((data) => {
           if (data.id === id) {
@@ -261,7 +257,7 @@ export default function HomeListData({
     },
     []
   );
-  
+
   const [toggleDataSAPWEBPORTAL, setToggleDataSAPWEBPORTAL] = useState([
     { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Open Orders' },
     { id: 2, checked: false, label: 'Rate Cards' },
@@ -272,9 +268,9 @@ export default function HomeListData({
     { id: 7, checked: false, label: 'Quotation Module' },
     { id: 8, checked: false, label: 'Purchase Order Request' }
   ]);
-  
+
   const handleToggleChangeSAPWEBPORTAL = useCallback(
-    (id:any) => {
+    (id: any) => {
       setToggleDataSAPWEBPORTAL((prevToggleData) => {
         const updatedToggleData = prevToggleData.map((data) => {
           if (data.id === id) {
@@ -287,7 +283,7 @@ export default function HomeListData({
     },
     []
   );
-  
+
   const [showManagerInformationAction, { toggle: toggleShowManagerInformationAction }] = useBoolean(false);
   const [showManagerInformationAccess, { toggle: toggleShowManagerInformationAccess }] = useBoolean(false);
 
@@ -344,21 +340,6 @@ export default function HomeListData({
           style={{ position: 'relative' }}>
           {/* Action Tab */}
           <PivotItem headerText='Action'>
-
-
-            {
-              !isPopUp ?
-                <>
-                  <CommandBar
-                    className="ms-actionbar"
-                    items={_items}
-                    ariaLabel="Modal Commandbar"
-                    style={contactDetailContentsCommandBarDiv}
-                  />
-                </>
-                : null
-            }
-
             <div className="pt-10 pb-10">
               <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
                 <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
@@ -529,10 +510,19 @@ export default function HomeListData({
                             </div>
                             <div className={`toggleswichList`}>
                               {toggleDataAmerica?.map((data: any) => (
-                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked}
-                                    onChange={() => handleToggleChange(data.id)} />
-                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 mb-20`} key={data.id}>
+                                  <div className={`newCardBox`} style={{ backgroundColor: themeName == 'Light' ? " #D9D9D9" : "#474645", }}>
+                                    <div className={`toggleswichListInner`}>
+                                      <Toggle checked={data.checked} onChange={() => handleToggleChange(data.id)} />
+                                      <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                    </div>
+                                    <div className="ms-Grid" dir="ltr">
+                                      <div className="ms-Grid-row">
+                                        <div className='ms-Grid-col ms-md12 mt-10'> <RhfDropdown options={options} control={control} name="Office" placeholder='First Approval' styles={dropwDownFieldStyle} /> </div>
+                                        <div className='ms-Grid-col ms-md12 mt-10'> <RhfDropdown options={options} control={control} name="Office" placeholder='Second Approval' styles={dropwDownFieldStyle} /> </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               ))}
                             </div>
@@ -543,9 +533,19 @@ export default function HomeListData({
                             </div>
                             <div className={`toggleswichList`}>
                               {toggleDataEurope.map((data) => (
-                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked}  onChange={() => handleToggleChangeEurope(data.id)} />
-                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 mb-20`} key={data.id}>
+                                  <div className={`newCardBox`} style={{ backgroundColor: themeName == 'Light' ? " #D9D9D9" : "#474645", }}>
+                                    <div className={`toggleswichListInner `}>
+                                      <Toggle checked={data.checked} onChange={() => handleToggleChangeEurope(data.id)} />
+                                      <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                    </div>
+                                    <div className="ms-Grid" dir="ltr">
+                                      <div className="ms-Grid-row">
+                                        <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office" placeholder='First Approval' styles={dropwDownFieldStyle} /></div>
+                                        <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office" placeholder='Second Approval' styles={dropwDownFieldStyle} /></div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               ))}
                             </div>
@@ -556,9 +556,19 @@ export default function HomeListData({
                             </div>
                             <div className={`toggleswichList`}>
                               {toggleDataMena.map((data) => (
-                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked} onChange={() => handleToggleChangeMena(data.id)} />
-                                  <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 mb-20`} key={data.id}>
+                                  <div className={`newCardBox`} style={{ backgroundColor: themeName == 'Light' ? " #D9D9D9" : "#474645", }}>
+                                    <div className={`toggleswichListInner`}>
+                                      <Toggle checked={data.checked} onChange={() => handleToggleChangeMena(data.id)} />
+                                      <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                    </div>
+                                    <div className="ms-Grid" dir="ltr">
+                                      <div className="ms-Grid-row">
+                                        <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office1" placeholder='First Approval' styles={dropwDownFieldStyle} /></div>
+                                        <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office2" placeholder='Second Approval' styles={dropwDownFieldStyle} /></div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               ))}
                             </div>
@@ -568,9 +578,19 @@ export default function HomeListData({
                               </div>
                               <div className={`toggleswichList`}>
                                 {toggleDataAsiaPacific.map((data) => (
-                                  <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                    <Toggle checked={data.checked} onChange={() => handleToggleChangeAsiaPacific(data.id)} />
-                                    <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                  <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 mb-10`} key={data.id}>
+                                    <div className={`newCardBox`} style={{ backgroundColor: themeName == 'Light' ? " #D9D9D9" : "#474645", }}>
+                                      <div className={`toggleswichListInner`}>
+                                        <Toggle checked={data.checked} onChange={() => handleToggleChangeAsiaPacific(data.id)} />
+                                        <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                      </div>
+                                      <div className="ms-Grid" dir="ltr">
+                                        <div className="ms-Grid-row">
+                                          <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office3" placeholder='First Approval' styles={dropwDownFieldStyle} /></div>
+                                          <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office4" placeholder='Second Approval' styles={dropwDownFieldStyle} /></div>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 ))}
                               </div>
@@ -581,9 +601,19 @@ export default function HomeListData({
                               </div>
                               <div className={`toggleswichList`}>
                                 {toggleDataFinanceManagement.map((data) => (
-                                  <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                    <Toggle checked={data.checked} onChange={() => handleToggleChangeFinanceManagement(data.id)} />
-                                    <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                  <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 mb-20`} key={data.id}>
+                                    <div className={`newCardBox`} style={{ backgroundColor: themeName == 'Light' ? " #D9D9D9" : "#474645", }}>
+                                      <div className={`toggleswichListInner`}>
+                                        <Toggle checked={data.checked} onChange={() => handleToggleChangeFinanceManagement(data.id)} />
+                                        <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
+                                      </div>
+                                      <div className="ms-Grid" dir="ltr">
+                                        <div className="ms-Grid-row">
+                                          <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office3" placeholder='First Approval' styles={dropwDownFieldStyle} /></div>
+                                          <div className='ms-Grid-col ms-md12 mt-10'><RhfDropdown options={options} control={control} name="Office4" placeholder='Second Approval' styles={dropwDownFieldStyle} /></div>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </div>
                                 ))}
                               </div>
