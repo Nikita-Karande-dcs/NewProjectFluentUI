@@ -29,8 +29,13 @@ import { RhfDropdown } from '../shared/RhfDropdown';
 // const stackTokens: IStackTokens = { childrenGap: 10 };
 
 
+
 import { useBoolean } from '@fluentui/react-hooks';
 import { useCallback, useState } from 'react';
+
+
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useBoolean } from '@fluentui/react-hooks';
 
 function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
@@ -286,7 +291,6 @@ export default function HomeListData({
   const [showManagerInformationAction, { toggle: toggleShowManagerInformationAction }] = useBoolean(false);
   const [showManagerInformationAccess, { toggle: toggleShowManagerInformationAccess }] = useBoolean(false);
 
-
   return (
     <div style={{ width: '100%', height: 'calc(100vh - 10.5rem)', }}>
       <Stack className={contentStyles.header} horizontal>
@@ -337,12 +341,25 @@ export default function HomeListData({
           onLinkClick={(contact: any) => {
             setSelectedKey(contact.props.itemKey);
           }}
-
           style={{ position: 'relative' }}>
           {/* Action Tab */}
           <PivotItem headerText='Action'>
-            <div className="pt-10 pb-10">
 
+
+            {
+              !isPopUp ?
+                <>
+                  <CommandBar
+                    className="ms-actionbar"
+                    items={_items}
+                    ariaLabel="Modal Commandbar"
+                    style={contactDetailContentsCommandBarDiv}
+                  />
+                </>
+                : null
+            }
+
+            <div className="pt-10 pb-10">
               <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
                 <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
                   <div>
