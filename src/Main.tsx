@@ -10,7 +10,9 @@ import { darkTheme, lightTheme } from './themes/themes';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import Dashboard from './pages/Dashboard';
 import HomeDetailModal from './components/Home/HomeDetailModal';
+
 import UserLogin from './pages/UserLogin';
+
 initializeIcons();
 const Main = () => {
 	const [themeName, setTheme] = React.useState<any>(
