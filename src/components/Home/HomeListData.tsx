@@ -27,8 +27,16 @@ import { dropwDownFieldStyle, textFieldStyle, }
 import { RhfTextField } from '../shared/RhfTextField';
 import { RhfDropdown } from '../shared/RhfDropdown';
 // const stackTokens: IStackTokens = { childrenGap: 10 };
+
+
+
+import { useBoolean } from '@fluentui/react-hooks';
+import { useCallback, useState } from 'react';
+
+
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useBoolean } from '@fluentui/react-hooks';
+
 function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
 }
@@ -58,8 +66,7 @@ export default function HomeListData({
   const themeName = useTheme().themeName;
   const [isnew, setInsew] = React.useState(false);
   const [selectedKey, setSelectedKey] = React.useState(0);
-  const history = useNavigate();
-  const location = useLocation();
+
 
   const options = [
     { key: 'option1', text: 'Option 1' },
@@ -80,93 +87,207 @@ export default function HomeListData({
     []
   );
 
-  const toggleDataAmerica = [
-    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Argentina', },
-    { id: 2, label: 'Brazil', },
-    { id: 3, label: 'NADS', },
-    { id: 4, label: 'VIO', },
-  ];
+  const [toggleDataAmerica, setToggleDataAmerica] = useState([
+    { id: 1, checked: false, label: 'Argentina' },
+    { id: 2, checked: false, label: 'Brazil' },
+    { id: 3, checked: false, label: 'NADS' },
+    { id: 4, checked: false, label: 'VIO' }
+  ]);
 
-  const toggleBtnEurope = [
-    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Czech', },
-    { id: 2, label: 'Denmark', },
-    { id: 3, label: 'Germany', },
-    { id: 4, label: 'Spain', },
-    { id: 5, label: 'France', },
-    { id: 6, label: 'Greece', },
-    { id: 7, label: 'Hungary', },
-    { id: 8, label: 'Italy', },
-    { id: 9, label: 'Netherland', },
-    { id: 10, label: 'United Kingdom', },
-    { id: 11, label: 'Beam (Non-extreme reach company)', },
-    { id: 12, label: 'Spotgate (Non-extreme reach company)', },
-  ];
-
-  const toggleDataMena = [
-    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Mena', },
-    { id: 2, label: 'Cloud -EG (Non-extreme reach company)', },
-  ];
-
-  const toggleBtnAsiaPacific = [
-    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'China', },
-    { id: 2, label: 'India', },
-    { id: 3, label: 'Japan', },
-    { id: 4, label: 'Malaysia', },
-    { id: 5, label: 'Singapore', },
-    { id: 6, label: 'Thailand', },
-    { id: 7, label: 'Australia', },
-    { id: 8, label: 'New Zealand', }
-  ];
-
-  const toggleBtnFinanceManagement = [
-    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Adstream Holdings Pty Limited', },
-    { id: 2, label: 'Dormant Cos', },
-    { id: 3, label: 'Adjustments', },
-    { id: 4, label: 'Hong Kong (Non-Trading)', },
-    { id: 5, label: 'The Traffic Bureae Limited (Historical)', },
-    { id: 6, label: 'Citizen Ltd(UK) (Non-trading)', },
-    { id: 7, label: 'Portland PMS Ltd (Non-Trading)', },
-    { id: 8, label: 'Portland PMS Ltd (Non-Trading)', },
-    { id: 9, label: 'Portland PMS Ltd (Non-Trading)', },
-    { id: 10, label: 'Pelagon Limited (Non-Trading)', }
-  ];
-
-  const toggleDataFinance = [
-    { id: 1, label: 'SAP Business One(Client access)', checked: isnew, onChange: handleNewToggleChange, },
-    { id: 2, label: 'SData Transfer Workbench (DTW)', },
-  ];
-  const toggleDataReporting = [
-    { id: 1, label: 'Sharperlight Reporting - Finance user', checked: isnew, onChange: handleNewToggleChange, },
-    { id: 2, label: 'Sharperlight Reporting - Web user', },
-  ];
-  const toggleBtnSAPWEBPORTAL = [
-    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Open Orders', },
-    { id: 2, label: 'Rate Cards', },
-    { id: 3, label: 'Invoice Request', },
-    { id: 4, label: 'Credit Note Request', },
-    { id: 5, label: 'Account Manager', },
-    { id: 6, label: 'Advertiser Manager', },
-    { id: 7, label: 'Quotation Module', },
-    { id: 8, label: 'Purchase Order Request ', }
-  ];
-
-  const _items = [
-    {
-      key: 'addUser',
-      text: 'Add User',
-      iconProps: { iconName: 'Add' },
-      style: themePrimaryOverFlowItems,
-      onClick: () => {
-        newContactAccount();
-      },
+  const handleToggleChange = useCallback(
+    (id: any) => {
+      setToggleDataAmerica((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
     },
-  ];
+    []
+  );
 
-
-  const newContactAccount = () => {
-    history(`/contact/new`, { state: { background: location } });
+  //dont remove handleSubmit function
+  const handleSubmit = () => {
+    const selectedToggles = toggleDataAmerica.filter((data) => data.checked);
+    console.log(selectedToggles);
   };
 
+
+  const [toggleDataEurope, setToggleDataEurope] = useState([
+    { id: 1, checked:false,label: 'Czech' },
+    { id: 2, checked: false, label: 'Denmark' },
+    { id: 3, checked: false, label: 'Germany' },
+    { id: 4, checked: false, label: 'Spain' },
+    { id: 5, checked: false, label: 'France' },
+    { id: 6, checked: false, label: 'Greece' },
+    { id: 7, checked: false, label: 'Hungary' },
+    { id: 8, checked: false, label: 'Italy' },
+    { id: 9, checked: false, label: 'Netherland' },
+    { id: 10, checked: false, label: 'United Kingdom' },
+    { id: 11, checked: false, label: 'Beam (Non-extreme reach company)' },
+    { id: 12, checked: false, label: 'Spotgate (Non-extreme reach company)' }
+  ]);
+  
+  const handleToggleChangeEurope = useCallback(
+    (id: any) => {
+      setToggleDataEurope((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
+    },
+    []
+  );
+  
+
+  const [toggleDataMena, setToggleDataMena] = useState([
+    { id: 1, checked: false, label: 'Mena' },
+    { id: 2, checked: false, label: 'Cloud -EG (Non-extreme reach company)' }
+  ]);
+
+  const handleToggleChangeMena = useCallback(
+    (id:any) => {
+      setToggleDataMena((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
+    },
+    []
+  );
+
+  const [toggleDataAsiaPacific, setToggleDataAsiaPacific] = useState([
+    { id: 1, checked: false, label: 'China' },
+    { id: 2, checked: false, label: 'India' },
+    { id: 3, checked: false, label: 'Japan' },
+    { id: 4, checked: false, label: 'Malaysia' },
+    { id: 5, checked: false, label: 'Singapore' },
+    { id: 6, checked: false, label: 'Thailand' },
+    { id: 7, checked: false, label: 'Australia' },
+    { id: 8, checked: false, label: 'New Zealand' }
+  ]);
+  
+  const handleToggleChangeAsiaPacific = useCallback(
+    (id:any) => {
+      setToggleDataAsiaPacific((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
+    },
+    []
+  );
+  
+  const [toggleDataFinanceManagement, setToggleDataFinanceManagement] = useState([
+    { id: 1, checked: false, label: 'Adstream Holdings Pty Limited' },
+    { id: 2, checked: false, label: 'Dormant Cos' },
+    { id: 3, checked: false, label: 'Adjustments' },
+    { id: 4, checked: false, label: 'Hong Kong (Non-Trading)' },
+    { id: 5, checked: false, label: 'The Traffic Bureae Limited (Historical)' },
+    { id: 6, checked: false, label: 'Citizen Ltd(UK) (Non-trading)' },
+    { id: 7, checked: false, label: 'Portland PMS Ltd (Non-Trading)' },
+    { id: 8, checked: false, label: 'Portland PMS Ltd (Non-Trading)' },
+    { id: 9, checked: false, label: 'Portland PMS Ltd (Non-Trading)' },
+    { id: 10, checked: false, label: 'Pelagon Limited (Non-Trading)' }
+  ]);
+  
+  const handleToggleChangeFinanceManagement = useCallback(
+    (id:any) => {
+      setToggleDataFinanceManagement((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
+    },
+    []
+  );
+  
+
+  const [toggleDataFinance, setToggleDataFinance] = useState([
+    { id: 1, label: 'SAP Business One(Client access)', checked: false},
+    { id: 2, label: 'SData Transfer Workbench (DTW)',checked: false }
+  ]);
+  
+  const handleToggleChangeFinance = useCallback(
+    (id:any) => {
+      setToggleDataFinance((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
+    },
+    []
+  );
+  
+  const [toggleDataReporting, setToggleDataReporting] = useState([
+    { id: 1, label: 'Sharperlight Reporting - Finance user', checked: false},
+    { id: 2, label: 'Sharperlight Reporting - Web user', checked: false }
+  ]);
+  
+  const handleToggleChangeReporting = useCallback(
+    (id:any) => {
+      setToggleDataReporting((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
+    },
+    []
+  );
+  
+  const [toggleDataSAPWEBPORTAL, setToggleDataSAPWEBPORTAL] = useState([
+    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Open Orders' },
+    { id: 2, checked: false, label: 'Rate Cards' },
+    { id: 3, checked: false, label: 'Invoice Request' },
+    { id: 4, checked: false, label: 'Credit Note Request' },
+    { id: 5, checked: false, label: 'Account Manager' },
+    { id: 6, checked: false, label: 'Advertiser Manager' },
+    { id: 7, checked: false, label: 'Quotation Module' },
+    { id: 8, checked: false, label: 'Purchase Order Request' }
+  ]);
+  
+  const handleToggleChangeSAPWEBPORTAL = useCallback(
+    (id:any) => {
+      setToggleDataSAPWEBPORTAL((prevToggleData) => {
+        const updatedToggleData = prevToggleData.map((data) => {
+          if (data.id === id) {
+            return { ...data, checked: !data.checked };
+          }
+          return data;
+        });
+        return updatedToggleData;
+      });
+    },
+    []
+  );
+  
   const [showManagerInformationAction, { toggle: toggleShowManagerInformationAction }] = useBoolean(false);
   const [showManagerInformationAccess, { toggle: toggleShowManagerInformationAccess }] = useBoolean(false);
 
@@ -188,13 +309,7 @@ export default function HomeListData({
         </Stack.Item>
         <Stack.Item>
           <Stack horizontal>
-            {/* <CommandBar
-							className="ms-actionbar"
-							items={_SubmitForApproval}
-							ariaLabel="Modal Commandbar"
-							styles={submitCommandBar}
-						// style={{ minWidth: "200px" }}
-						/> */}
+            <PrimaryButton className={'mb-20'} text="Submit" />
             {isPopUp == true && (
               <>
                 <IconButton
@@ -229,6 +344,8 @@ export default function HomeListData({
           style={{ position: 'relative' }}>
           {/* Action Tab */}
           <PivotItem headerText='Action'>
+
+
             {
               !isPopUp ?
                 <>
@@ -241,6 +358,7 @@ export default function HomeListData({
                 </>
                 : null
             }
+
             <div className="pt-10 pb-10">
               <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
                 <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
@@ -410,9 +528,10 @@ export default function HomeListData({
                               <h3>{'America'}</h3>
                             </div>
                             <div className={`toggleswichList`}>
-                              {toggleDataAmerica.map((data) => (
+                              {toggleDataAmerica?.map((data: any) => (
                                 <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Toggle checked={data.checked}
+                                    onChange={() => handleToggleChange(data.id)} />
                                   <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                 </div>
                               ))}
@@ -423,9 +542,9 @@ export default function HomeListData({
                               <h3>{'Europe'}</h3>
                             </div>
                             <div className={`toggleswichList`}>
-                              {toggleBtnEurope.map((data) => (
+                              {toggleDataEurope.map((data) => (
                                 <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Toggle checked={data.checked}  onChange={() => handleToggleChangeEurope(data.id)} />
                                   <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                 </div>
                               ))}
@@ -438,7 +557,7 @@ export default function HomeListData({
                             <div className={`toggleswichList`}>
                               {toggleDataMena.map((data) => (
                                 <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Toggle checked={data.checked} onChange={() => handleToggleChangeMena(data.id)} />
                                   <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                 </div>
                               ))}
@@ -448,9 +567,9 @@ export default function HomeListData({
                                 <h3>{'Asia-Pacific'}</h3>
                               </div>
                               <div className={`toggleswichList`}>
-                                {toggleBtnAsiaPacific.map((data) => (
+                                {toggleDataAsiaPacific.map((data) => (
                                   <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                    <Toggle checked={data.checked} onChange={data.onChange} />
+                                    <Toggle checked={data.checked} onChange={() => handleToggleChangeAsiaPacific(data.id)} />
                                     <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                   </div>
                                 ))}
@@ -461,9 +580,9 @@ export default function HomeListData({
                                 <h3>{'Finance Management/Dormant/Non Trading Companies'}</h3>
                               </div>
                               <div className={`toggleswichList`}>
-                                {toggleBtnFinanceManagement.map((data) => (
+                                {toggleDataFinanceManagement.map((data) => (
                                   <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                    <Toggle checked={data.checked} onChange={data.onChange} />
+                                    <Toggle checked={data.checked} onChange={() => handleToggleChangeFinanceManagement(data.id)} />
                                     <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                   </div>
                                 ))}
@@ -496,7 +615,7 @@ export default function HomeListData({
                             <div className={`toggleswichList`}>
                               {toggleDataFinance.map((data) => (
                                 <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Toggle checked={data.checked} onChange={() => handleToggleChangeFinance(data.id)} />
                                   <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                 </div>
                               ))}
@@ -509,7 +628,7 @@ export default function HomeListData({
                             <div className={`toggleswichList`}>
                               {toggleDataReporting.map((data) => (
                                 <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Toggle checked={data.checked} onChange={() => handleToggleChangeReporting(data.id)} />
                                   <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                 </div>
                               ))}
@@ -520,9 +639,9 @@ export default function HomeListData({
                               <h3>{'SAP WEB PORTAL'}</h3>
                             </div>
                             <div className={`toggleswichList`}>
-                              {toggleBtnSAPWEBPORTAL.map((data) => (
+                              {toggleDataSAPWEBPORTAL.map((data) => (
                                 <div className={`ms-Grid-col ms-md12 ms-lg6 ms-xl3 toggleswichListInner mb-10`} key={data.id}>
-                                  <Toggle checked={data.checked} onChange={data.onChange} />
+                                  <Toggle checked={data.checked} onChange={() => handleToggleChangeSAPWEBPORTAL(data.id)} />
                                   <Label className={`${classNames.stackItemLabelStyles} ml-5`}>{data.label}</Label>
                                 </div>
                               ))}
@@ -559,7 +678,7 @@ export default function HomeListData({
                             </div>
                           </div>
                           <div className={`clearBoth`}></div>
-                          { showManagerInformationAccess &&
+                          {showManagerInformationAccess &&
                             <div className="ms-Grid-col ms-lg12 ms-xl12">
                               <div className="ms-Grid" dir="ltr">
                                 <div className="newManagerInformationSection" style={neutralColorsGray100(myThemeContext)}>
@@ -610,11 +729,6 @@ export default function HomeListData({
                             <div className={`formGroup`}>
                               <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Comment</label>
                               <RhfTextField control={control} name="Comment" styles={textFieldStyle} />
-                            </div>
-                          </div>
-                          <div className="ms-Grid-col ms-lg12 ms-x12">
-                            <div className={`text-right`}>
-                              <PrimaryButton className={'mb-20'} text="Submit" />
                             </div>
                           </div>
                         </Stack>

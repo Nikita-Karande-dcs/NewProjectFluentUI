@@ -6,6 +6,7 @@ import {
 	ThemeContext,
 	Spinner,
 	SpinnerSize,
+	CommandBar,
 } from '@fluentui/react';
 import { Outlet } from 'react-router-dom';
 import React, {
@@ -19,6 +20,8 @@ import HomeCommandBar from '../components/Home/HomeCommandBar';
 import HomeList from '../components/Home/HomeList';
 import { toggleFullScreen } from '../app/appSlice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { themePrimaryOverFlowItems } from '../styles/ContactStyles';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const SearchBar = (
 	myThemeContext: any
@@ -36,6 +39,8 @@ export const SearchBar = (
 
 const Home = () => {
 	const appDisptach = useAppDispatch();
+	const history = useNavigate();
+	const location = useLocation();
 	const myThemeContext = useContext(ThemeContext);
 	const classNames = mergeStyleSets({
 		mcDashboard: {
@@ -51,6 +56,23 @@ const Home = () => {
 		iconName: 'FullScreen',
 	};
 	const screenInPopup: IIconProps = { iconName: 'BackToWindow' };
+
+	const _items = [
+		{
+			key: 'addUser',
+			text: 'Add User',
+			iconProps: { iconName: 'Add' },
+			style: themePrimaryOverFlowItems,
+			onClick: () => {
+				newContactAccount();
+			},
+		},
+	];
+
+
+	const newContactAccount = () => {
+		history(`/contact/new`, { state: { background: location } });
+	};
 
 	return (
 		<>
@@ -112,7 +134,14 @@ const Home = () => {
 									<HomeCommandBar
 										selectedItemCount={50}
 									/>
-									
+
+
+									<CommandBar
+										className="ms-actionbar"
+										items={_items}
+										ariaLabel="Modal Commandbar"
+										// style={contactDetailContentsCommandBarDiv}
+									/>
 									<IconButton
 										id="btnFullScreen"
 										text="full Screen"
@@ -120,13 +149,13 @@ const Home = () => {
 										styles={pageIconButtonStyles(myThemeContext)}
 										iconProps={fullScreen ? screenInPopup : fullScreenIcon}
 										ariaLabel="Fullscreen popup modal"
-									/> 
+									/>
 								</Stack>
 							</Stack>
 						</Stack.Item>
 					</Stack>
 					<Stack>
-						<HomeList fullScreen={fullScreen}/>
+						<HomeList fullScreen={fullScreen} />
 						<Suspense fallback={<Spinner size={SpinnerSize.medium} />}>
 							<Outlet />
 						</Suspense>
