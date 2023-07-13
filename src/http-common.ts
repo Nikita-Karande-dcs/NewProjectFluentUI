@@ -4,7 +4,7 @@ import { POST_GET_REFRESH_TOKEN } from './api';
 import { store } from './app/store';
 import { auth, logout } from './components/User/UserLoginSlice';
 let baseURL: string;
-baseURL = 'https://demotdlapi.azurewebsites.net/';
+baseURL = 'https://localhost:7127';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,

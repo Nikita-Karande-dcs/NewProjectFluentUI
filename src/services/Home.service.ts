@@ -7,10 +7,21 @@ export async function getUserData() {
 	});
 }
 
-export async function saveUserData(data: any) {
-	return await doPost(API.SAVE_API_USER, data).then((response: any) => {
-		return response;
-	});
+// export async function saveUserData(data: any) {
+// 	return await doPost(API.SAVE_API_USER, data).then((response: any) => {
+// 		return response;
+// 	});
+// }
+export function saveUserData(data: any) {
+	return (dispatch: any) => {
+		return doPost(API.SAVE_API_USER, data)
+			.then((response: any) => {
+				dispatch({ type: 'SAVE_USER_DATA', payload: response });
+			})
+			.catch((error: any) => {
+				console.log(error);
+		});
+	};
 }
 
 export async function updateUserData(data: any) {

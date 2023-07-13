@@ -18,6 +18,7 @@ import {
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { contactDetailContentsiconButtonStyles, neutralColorsGray100, themePrimaryOverFlowItems, } from '../../styles/ContactStyles';
+import { useAppDispatch } from '../../app/hooks';
 import { Gap5Token, }
   from '../../styles/SharedStyles';
 import { useTheme } from '../../Context/ThemeContext';
@@ -32,6 +33,7 @@ import { RhfDropdown } from '../shared/RhfDropdown';
 
 import { useBoolean } from '@fluentui/react-hooks';
 import { useCallback, useState } from 'react';
+import { saveUserData } from '../../services/Home.service';
 
 function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
@@ -53,7 +55,7 @@ export default function HomeListData({
   data
 }: any) {
 
-  const { control } = useForm<
+  const { handleSubmit, control } = useForm<
     any,
     any
   >({ reValidateMode: 'onSubmit', mode: 'all' });
@@ -62,7 +64,28 @@ export default function HomeListData({
   const themeName = useTheme().themeName;
   const [isnew, setInsew] = React.useState(false);
   const [selectedKey, setSelectedKey] = React.useState(0);
+  const appDisptach = useAppDispatch();
+  const [selectedValueUserRequestType, setSelectedValueUserRequestType] = useState('New');
 
+  const _onChangeUserRequestType = () => {
+    const newValue = selectedValueUserRequestType === 'New' ? 'Amend' : 'New';
+    setSelectedValueUserRequestType(newValue);
+  };
+
+
+  const [selectedValueTraining, setSelectedValueTraining] = useState(true);
+
+  const _onChangeTraining = () => {
+    const newValue = selectedValueTraining === true ? false : true;
+    setSelectedValueTraining(newValue);
+  };
+
+  const [startDate, setStartDate] = useState(null);
+
+  const handleDateChange = (date: any) => {
+    const formattedDate = date.toISOString().split('T')[0];
+    setStartDate(formattedDate);
+  };
 
   const options = [
     { key: 'option1', text: 'Option 1' },
@@ -106,10 +129,10 @@ export default function HomeListData({
   );
 
   //dont remove handleSubmit function
-  const handleSubmit = () => {
-    const selectedToggles = toggleDataAmerica.filter((data) => data.checked);
-    console.log(selectedToggles);
-  };
+  // const handleSubmit = () => {
+  //   const selectedToggles = toggleDataAmerica.filter((data) => data.checked);
+  //   console.log(selectedToggles);
+  // };
 
 
   const [toggleDataEurope, setToggleDataEurope] = useState([
@@ -259,7 +282,7 @@ export default function HomeListData({
   );
 
   const [toggleDataSAPWEBPORTAL, setToggleDataSAPWEBPORTAL] = useState([
-    { id: 1, checked: isnew, onChange: handleNewToggleChange, label: 'Open Orders' },
+    { id: 1, checked: false, label: 'Open Orders' },
     { id: 2, checked: false, label: 'Rate Cards' },
     { id: 3, checked: false, label: 'Invoice Request' },
     { id: 4, checked: false, label: 'Credit Note Request' },
@@ -287,6 +310,71 @@ export default function HomeListData({
   const [showManagerInformationAction, { toggle: toggleShowManagerInformationAction }] = useBoolean(false);
   const [showManagerInformationAccess, { toggle: toggleShowManagerInformationAccess }] = useBoolean(false);
 
+
+  const submitForm = () => {
+    try {
+      handleSubmit(async (data) => {
+        const marketAccess = [
+          {
+            regionName: 'America',
+            countries: toggleDataAmerica
+              .filter((data) => data.checked)
+              .map((data) => ({ country: data.label }))
+          },
+          {
+            regionName: 'Mena',
+            countries: toggleDataMena
+              .filter((data) => data.checked)
+              .map((data) => ({ country: data.label }))
+          }
+        ];
+
+        const accesses = [
+          {
+            key: 'Finance',
+            accessDetailsDtos: toggleDataFinance
+              .filter((data) => data.checked)
+              .map((data) => ({
+                value: data.label,
+                description: 'No description'
+              }))
+          },
+          {
+            key: 'Reporting',
+            accessDetailsDtos: toggleDataReporting
+              .filter((data) => data.checked)
+              .map((data) => ({
+                value: data.label,
+                description: 'No description'
+              }))
+          }
+        ];
+
+        let postData = {
+          userRequestType: selectedValueUserRequestType,
+          requestor: data.requestor,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          startDate: startDate,
+          office: data.office,
+          email: data.email,
+          lineManagerId: data.lineManagerId,
+          permissionGroupId: data.permissionGroupId,
+          webApprovingManagerId: data.webApprovingManagerId,
+          training: selectedValueTraining,
+          trainingRemarks: data.trainingRemarks,
+          comment: data.comment,
+          marketAccess,
+          accesses,
+        };
+
+        let apidata = await appDisptach(saveUserData(postData));
+        console.log("apidata", apidata);
+      })();
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <div style={{ width: '100%', height: 'calc(100vh - 10.5rem)', }}>
       <Stack className={contentStyles.header} horizontal>
@@ -305,7 +393,7 @@ export default function HomeListData({
         </Stack.Item>
         <Stack.Item>
           <Stack horizontal>
-            <PrimaryButton className={'mb-20'} text="Submit" />
+            <PrimaryButton className={'mb-20'} onClick={() => submitForm()} text="Submit" />
             {isPopUp == true && (
               <>
                 <IconButton
@@ -351,13 +439,19 @@ export default function HomeListData({
                             <h2>{'Action'}</h2>
                           </div>
                           <div className="switchList">
-                            <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="New" offText="Amend" defaultChecked onChange={_onChange} /> </Stack>
+                            <Stack className={`toggleswichbtn`}> <Toggle
+                              inlineLabel
+                              onText="New"
+                              offText="Amend"
+                              defaultChecked={selectedValueUserRequestType === 'New'}
+                              onChange={_onChangeUserRequestType}
+                            /> </Stack>
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
-                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Requester </label>
-                            <RhfTextField control={control} name="Requester" styles={textFieldStyle} />
+                            <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Requestor </label>
+                            <RhfTextField control={control} name="Requestor" styles={textFieldStyle} />
                           </div>
                         </div>
                       </div>
@@ -373,20 +467,20 @@ export default function HomeListData({
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> First Name </label>
-                            <RhfTextField control={control} name="FirstName" styles={textFieldStyle} />
+                            <RhfTextField control={control} name="firstName" styles={textFieldStyle} />
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 msRhfTextField-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Last Name </label>
-                            <RhfTextField control={control} name="LastName" styles={textFieldStyle} />
+                            <RhfTextField control={control} name="lastName" styles={textFieldStyle} />
                           </div>
                         </div>
                         <div className={`clearBoth`}></div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Email </label>
-                            <RhfTextField control={control} name="Email" styles={textFieldStyle} />
+                            <RhfTextField control={control} name="email" styles={textFieldStyle} />
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
@@ -394,49 +488,32 @@ export default function HomeListData({
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Start Date </label>
                             <DatePicker
                               id="fromDate"
-                              placeholder='fromDate'
+                              placeholder="fromDate"
                               isMonthPickerVisible={true}
                               style={{ marginTop: '5px', color: 'red' }}
-                              // styles={{
-                              // 	callout: {
-                              // 		background: 'red !important',
-                              // 	},
-                              // }}
-                              calloutProps={{
-                                className: `${themeName == 'Light'
-                                  ? 'datePickerCalloutLight'
-                                  : 'datePickerCalloutDark'
-                                  }`,
-                              }}
-                            // styles={datePickerStyle(myThemeContext)}
-                            // value={transactionFilter?.fromDate}
-                            // onSelectDate={
-                            // 	fromDateSelect as (
-                            // 		date: Date | null | undefined
-                            // 	) => void
-                            // }
-                            >
-                            </DatePicker>
+                              onSelectDate={handleDateChange}
+                              value={startDate ? new Date(startDate) : undefined}
+                            />
                           </div>
                         </div>
                         <div className={`clearBoth`}></div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Office </label>
-                            <RhfDropdown options={options} control={control} name="Office" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                            <RhfDropdown options={options} control={control} name="office" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Permission Group </label>
-                            <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                            <RhfDropdown options={options2} control={control} name="permissionGroupId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className={`clearBoth`}></div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Line Manager </label>
-                            <RhfDropdown options={options2} control={control} name="Line Manager" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                            <RhfDropdown options={options2} control={control} name="lineManagerId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
@@ -681,7 +758,7 @@ export default function HomeListData({
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
                             <div className={`formGroup`}>
                               <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Web Approving Manager</label>
-                              <RhfDropdown options={options2} control={control} name="PermissionGroup" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                              <RhfDropdown options={options2} control={control} name="webApprovingManagerId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                             </div>
                           </div>
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
@@ -700,7 +777,7 @@ export default function HomeListData({
                                 <div className={`formGroup`}>
                                   <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Training</label>
                                   <div className="switchList">
-                                    <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="Yes" offText="No" defaultChecked onChange={_onChange} /> </Stack>
+                                    <Stack className={`toggleswichbtn`}> <Toggle inlineLabel onText="Yes" offText="No" defaultChecked onChange={_onChangeTraining} /> </Stack>
                                   </div>
                                 </div>
                               </div>
@@ -752,13 +829,13 @@ export default function HomeListData({
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
                             <div className={`formGroup`}>
                               <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>if yes, any requirement?</label>
-                              <RhfTextField control={control} name="requirement" styles={textFieldStyle} />
+                              <RhfTextField control={control} name="trainingRemarks" styles={textFieldStyle} />
                             </div>
                           </div>
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
                             <div className={`formGroup`}>
                               <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Comment</label>
-                              <RhfTextField control={control} name="Comment" styles={textFieldStyle} />
+                              <RhfTextField control={control} name="comment" styles={textFieldStyle} />
                             </div>
                           </div>
                         </Stack>
