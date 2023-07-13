@@ -9,12 +9,15 @@ import {
   Toggle,
   PrimaryButton,
   DatePicker,
+  CommandBar,
+  IconButton,
+  IIconProps,
 }
   from '@fluentui/react';
 
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { neutralColorsGray100, } from '../../styles/ContactStyles';
+import { contactDetailContentsCommandBarDiv, contactDetailContentsiconButtonStyles, neutralColorsGray100, themePrimaryOverFlowItems, } from '../../styles/ContactStyles';
 import { Gap5Token, }
   from '../../styles/SharedStyles';
 import { useTheme } from '../../Context/ThemeContext';
@@ -23,12 +26,15 @@ import { dropwDownFieldStyle, textFieldStyle, }
 import { RhfTextField } from '../shared/RhfTextField';
 import { RhfDropdown } from '../shared/RhfDropdown';
 // const stackTokens: IStackTokens = { childrenGap: 10 };
-
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
 }
 
+const fullScreenIcon: IIconProps = { iconName: 'FullScreen' };
+const screenInPopup: IIconProps = { iconName: 'BackToWindow' };
+const cancelIcon: IIconProps = { iconName: 'Cancel' };
 
 
 export default function HomeListData({
@@ -36,6 +42,9 @@ export default function HomeListData({
   classNames,
   sectionStackTokens,
   fullScreen,
+  isPopUp,
+  handleHideModel,
+  setFullScreen,
   data
 }: any) {
 
@@ -48,7 +57,8 @@ export default function HomeListData({
   const themeName = useTheme().themeName;
   const [isnew, setInsew] = React.useState(false);
   const [selectedKey, setSelectedKey] = React.useState(0);
-
+  const history = useNavigate();
+  const location = useLocation();
 
   const options = [
     { key: 'option1', text: 'Option 1' },
@@ -139,6 +149,24 @@ export default function HomeListData({
     { id: 8, label: 'Purchase Order Request ', }
   ];
 
+  const _items = [
+    {
+      key: 'addUser',
+      text: 'Add User',
+      iconProps: { iconName: 'Add' },
+      style: themePrimaryOverFlowItems,
+      onClick: () => {
+        newContactAccount();
+      },
+    },
+  ];
+
+
+  const newContactAccount = () => {
+    history(`/contact/new`, { state: { background: location } });
+  };
+
+
   return (
     <div style={{ width: '100%', height: 'calc(100vh - 10.5rem)', }}>
       <Stack className={contentStyles.header} horizontal>
@@ -155,6 +183,37 @@ export default function HomeListData({
             </Stack.Item>
           </Stack>
         </Stack.Item>
+        <Stack.Item>
+          <Stack horizontal>
+            {/* <CommandBar
+							className="ms-actionbar"
+							items={_SubmitForApproval}
+							ariaLabel="Modal Commandbar"
+							styles={submitCommandBar}
+						// style={{ minWidth: "200px" }}
+						/> */}
+            {isPopUp == true && (
+              <>
+                <IconButton
+                  id="btnFullScreen"
+                  onClick={() => setFullScreen((preVal: any) => !preVal)}
+                  styles={contactDetailContentsiconButtonStyles(myThemeContext)}
+                  iconProps={fullScreen ? screenInPopup : fullScreenIcon}
+                  ariaLabel="Fullscreen popup modal"
+                />
+                <IconButton
+                  styles={contactDetailContentsiconButtonStyles(
+                    myThemeContext,
+                    'red'
+                  )}
+                  iconProps={cancelIcon}
+                  ariaLabel="Close popup modal"
+                  onClick={handleHideModel}
+                />
+              </>
+            )}
+          </Stack>
+        </Stack.Item>
       </Stack>
 
       <div className={contentStyles.body}>
@@ -164,10 +223,25 @@ export default function HomeListData({
           onLinkClick={(contact: any) => {
             setSelectedKey(contact.props.itemKey);
           }}
+
           style={{ position: 'relative' }}>
           {/* Action Tab */}
           <PivotItem headerText='Action'>
+            {
+              !isPopUp ?
+                <>
+                  <CommandBar
+                    className="ms-actionbar"
+                    items={_items}
+                    ariaLabel="Modal Commandbar"
+                    style={contactDetailContentsCommandBarDiv}
+                  />
+                </>
+                : null
+            }
+
             <div className="pt-10 pb-10">
+
               <Stack.Item className={fullScreen ? contentStyles.tileListContentFull : contentStyles.tileListContent}>
                 <div className={themeName === 'Light' ? 'customScrollbar' : 'customScrollbarDark'}>
                   <div>
