@@ -33,13 +33,8 @@ import { RhfDropdown } from '../shared/RhfDropdown';
 
 import { useBoolean } from '@fluentui/react-hooks';
 import { useCallback, useEffect, useState } from 'react';
-import { getOneUser, saveUserData } from '../../services/Home.service';
+import { getLineManagerDropdown, getOfficeDropdown, getOneUser, getPermissionDropdown, saveUserData } from '../../services/Home.service';
 import { useParams } from 'react-router-dom';
-
-function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
-  // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
-}
-
 const fullScreenIcon: IIconProps = { iconName: 'FullScreen' };
 const screenInPopup: IIconProps = { iconName: 'BackToWindow' };
 const cancelIcon: IIconProps = { iconName: 'Cancel' };
@@ -106,13 +101,21 @@ export default function HomeListData({
   const appDisptach = useAppDispatch();
   const [selectedValueUserRequestType, setSelectedValueUserRequestType] = useState('New');
   const [isIndividualUser, setIndividualUser] = useState<any>("");
-  const [userDetail, setUserDetail] = useState<any>(initialState);
+  // const [userDetail, setUserDetail] = useState<any>(initialState);
   const [isNew, setIsNew] = useState<boolean>(false);
   const _onChangeUserRequestType = () => {
     const newValue = selectedValueUserRequestType === 'New' ? 'Amend' : 'New';
     setSelectedValueUserRequestType(newValue);
   };
+  const [userDetail, setUserDetail] = useState<any>({
+    profile:[],
+		office: [],
+    LineManager:[],
+    Permission:[],
+	});
 
+console.log("bankAccountSummaryInfo/office",userDetail.office);
+console.log("bankAccountSummaryInfo/profile",userDetail.profile);
 
   const [selectedValueTraining, setSelectedValueTraining] = useState(true);
 
@@ -199,12 +202,43 @@ export default function HomeListData({
 
 
   const initData = async () => {
+    let Office = await getOfficeDropdown();
+		let LineManager = await getLineManagerDropdown();
+		let Permission = await getPermissionDropdown();
+   
+    
+    let officetext;
+    let OfficeDropdown: any[] = [];
+		Office.Data.map((item: any) => {
+			officetext = item.name != null ? item.name.split('~~') : item.name;
+			OfficeDropdown.push({ key: item.code, text: officetext });
+		});
+
+    let LineManagertext;
+    let LineManagertextDropdown: any[] = [];
+		LineManager.Data.map((item: any) => {
+			LineManagertext = item.u_NAME != null ? item.u_NAME.split('~~') : item.u_NAME;
+			LineManagertextDropdown.push({ key: item.userId, text: LineManagertext });
+		});
+
+    let Permissiontext;
+    let PermissiontextDropdown: any[] = [];
+		Permission.Data.map((item: any) => {
+			Permissiontext = item.groupName != null ? item.groupName.split('~~') : item.groupName;
+			PermissiontextDropdown.push({ key: item.groupId, text: Permissiontext });
+		});
+
     setUserDetail({ ...initialState });
     if (selectedUserId) {
       let contactProfile:any = await getOneUser(selectedUserId);
+   
       setUserDetail((preVal: any) => {
         return {
+          ...preVal,
           profile: contactProfile,
+          office: OfficeDropdown,
+          LineManager:LineManagertextDropdown,
+          Permission:PermissiontextDropdown
         };
       });
     }
@@ -604,20 +638,20 @@ export default function HomeListData({
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Office </label>
-                            <RhfDropdown options={options} control={control} name="office" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                            <RhfDropdown options={userDetail.office} control={control} name="office" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Permission Group </label>
-                            <RhfDropdown options={options2} control={control} name="permissionGroupId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                            <RhfDropdown options={userDetail.Permission} control={control} name="permissionGroupId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className={`clearBoth`}></div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Line Manager </label>
-                            <RhfDropdown options={options2} control={control} name="lineManagerId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                            <RhfDropdown options={userDetail.LineManager} control={control} name="lineManagerId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                           </div>
                         </div>
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
