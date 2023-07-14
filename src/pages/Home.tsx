@@ -42,6 +42,7 @@ const Home = () => {
 	const history = useNavigate();
 	const location = useLocation();
 	const myThemeContext = useContext(ThemeContext);
+	const [selectedItemCount, setSelectedItemCount] = React.useState<number>(0);
 	const classNames = mergeStyleSets({
 		mcDashboard: {
 			width: '100%',
@@ -155,7 +156,7 @@ const Home = () => {
 						</Stack.Item>
 					</Stack>
 					<Stack>
-						<HomeList fullScreen={fullScreen} />
+						<HomeList fullScreen={fullScreen} setSelectedItemCount={setSelectedItemCount} selectedUserList={undefined} selectedUser={undefined} Users={null} getUserAsync={null}/>
 						<Suspense fallback={<Spinner size={SpinnerSize.medium} />}>
 							<Outlet />
 						</Suspense>

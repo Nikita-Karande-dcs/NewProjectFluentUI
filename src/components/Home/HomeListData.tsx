@@ -18,7 +18,7 @@ import {
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { contactDetailContentsiconButtonStyles, neutralColorsGray100, themePrimaryOverFlowItems, } from '../../styles/ContactStyles';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Gap5Token, }
   from '../../styles/SharedStyles';
 import { useTheme } from '../../Context/ThemeContext';
@@ -32,8 +32,9 @@ import { RhfDropdown } from '../shared/RhfDropdown';
 
 
 import { useBoolean } from '@fluentui/react-hooks';
-import { useCallback, useState } from 'react';
-import { saveUserData } from '../../services/Home.service';
+import { useCallback, useEffect, useState } from 'react';
+import { getOneUser, saveUserData } from '../../services/Home.service';
+import { useParams } from 'react-router-dom';
 
 function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
   // console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
@@ -42,6 +43,40 @@ function _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
 const fullScreenIcon: IIconProps = { iconName: 'FullScreen' };
 const screenInPopup: IIconProps = { iconName: 'BackToWindow' };
 const cancelIcon: IIconProps = { iconName: 'Cancel' };
+
+export interface IHomeProps {
+  contentStyles: any;
+  classNames: any;
+  sectionStackTokens: any;
+  handleHideModel: any;
+  setContactModifySuccess?: any;
+  isPopUp?: boolean;
+  fullScreen?: boolean;
+  setFullScreen?: any;
+  activeUser?: any;
+  data?: any;
+}
+
+const initialState = [
+  {
+    requestId: null,
+    userRequestType: "",
+    requestor: "",
+    firstName: "fvdfv",
+    lastName: "",
+    startDate: "",
+    office: "",
+    email: "",
+    lineManagerId: "",
+    permissionGroupId: "",
+    webApprovingManagerId: "",
+    training: false,
+    trainingRemarks: "",
+    comment: "",
+    marketAccess: [],
+    accesses: []
+  }
+];
 
 
 export default function HomeListData({
@@ -52,21 +87,27 @@ export default function HomeListData({
   isPopUp,
   handleHideModel,
   setFullScreen,
-  data
-}: any) {
-
-  const { handleSubmit, control } = useForm<
+  data,
+  activeUser
+}: IHomeProps) {
+  let { selectedUserId } = useParams<any>();
+  // console.log("activeUser", activeUser.requestId);
+  if (selectedUserId == undefined) selectedUserId = activeUser?.requestId;
+  const { handleSubmit, control,setValue } = useForm<
     any,
     any
   >({ reValidateMode: 'onSubmit', mode: 'all' });
 
+  console.log("selectedUserId",selectedUserId);
   const myThemeContext = React.useContext(ThemeContext);
   const themeName = useTheme().themeName;
   const [isnew, setInsew] = React.useState(false);
   const [selectedKey, setSelectedKey] = React.useState(0);
   const appDisptach = useAppDispatch();
   const [selectedValueUserRequestType, setSelectedValueUserRequestType] = useState('New');
-
+  const [isIndividualUser, setIndividualUser] = useState<any>("");
+  const [userDetail, setUserDetail] = useState<any>(initialState);
+  const [isNew, setIsNew] = useState<boolean>(false);
   const _onChangeUserRequestType = () => {
     const newValue = selectedValueUserRequestType === 'New' ? 'Amend' : 'New';
     setSelectedValueUserRequestType(newValue);
@@ -128,11 +169,47 @@ export default function HomeListData({
     []
   );
 
-  //dont remove handleSubmit function
-  // const handleSubmit = () => {
-  //   const selectedToggles = toggleDataAmerica.filter((data) => data.checked);
-  //   console.log(selectedToggles);
-  // };
+  const setFormValues = () => {
+    if (userDetail && userDetail.profile) {
+      Object.keys(userDetail.profile).map((item) => {
+        setValue(item, userDetail.profile[item]);
+      });
+      console.log("userDetail.profile",userDetail.profile);
+      // const fName = userDetail.profile.firstName;
+      // const lName = userDetail.profile.lastName;
+      // setValue('firstName', fName);
+    }
+  }
+  
+	useEffect(() => {
+			setFormValues();
+      if (selectedUserId !== 'new') {
+        setIsNew(false);
+      } else {
+        setIsNew(true);
+      }
+	}, [userDetail.profile]);
+
+  useEffect(() => {
+    if (selectedUserId) {
+      setIndividualUser(selectedUserId);
+      initData();
+    }
+  }, [selectedUserId]);
+
+
+  const initData = async () => {
+    setUserDetail({ ...initialState });
+    if (selectedUserId) {
+      let contactProfile:any = await getOneUser(selectedUserId);
+      setUserDetail((preVal: any) => {
+        return {
+          profile: contactProfile,
+        };
+      });
+    }
+
+  };
 
 
   const [toggleDataEurope, setToggleDataEurope] = useState([
@@ -326,7 +403,25 @@ export default function HomeListData({
             countries: toggleDataMena
               .filter((data) => data.checked)
               .map((data) => ({ country: data.label }))
-          }
+          },
+          {
+            regionName: 'Europe',
+            countries: toggleDataEurope
+              .filter((data) => data.checked)
+              .map((data) => ({ country: data.label }))
+          },
+          {
+            regionName: 'AsiaPacific',
+            countries: toggleDataAsiaPacific
+              .filter((data) => data.checked)
+              .map((data) => ({ country: data.label }))
+          },
+          {
+            regionName: 'FinanceManagement',
+            countries: toggleDataFinanceManagement
+              .filter((data) => data.checked)
+              .map((data) => ({ country: data.label }))
+          },
         ];
 
         const accesses = [
@@ -347,23 +442,32 @@ export default function HomeListData({
                 value: data.label,
                 description: 'No description'
               }))
+          },
+          {
+            key: 'WebPortal',
+            accessDetailsDtos: toggleDataSAPWEBPORTAL
+              .filter((data) => data.checked)
+              .map((data) => ({
+                value: data.label,
+                description: 'No description'
+              }))
           }
         ];
 
         let postData = {
           userRequestType: selectedValueUserRequestType,
-          requestor: data.requestor,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          startDate: startDate,
-          office: data.office,
-          email: data.email,
-          lineManagerId: data.lineManagerId,
-          permissionGroupId: data.permissionGroupId,
-          webApprovingManagerId: data.webApprovingManagerId,
+          requestor: data.requestor ? data.requestor : "",
+          firstName: data.firstName ? data.firstName : "",
+          lastName: data.lastName ? data.lastName : "",
+          startDate: startDate ? startDate : null,
+          office: data.office ? data.office : "",
+          email: data.email ? data.email : "",
+          lineManagerId: data.lineManagerId ? data.lineManagerId : null,
+          permissionGroupId: data.permissionGroupId ? data.permissionGroupId : "",
+          webApprovingManagerId: data.webApprovingManagerId ? data.webApprovingManagerId : null,
           training: selectedValueTraining,
-          trainingRemarks: data.trainingRemarks,
-          comment: data.comment,
+          trainingRemarks: data.trainingRemarks ? data.trainingRemarks : "",
+          comment: data.comment ? data.comment : null,
           marketAccess,
           accesses,
         };
@@ -451,7 +555,7 @@ export default function HomeListData({
                         <div className="ms-Grid-col ms-lg12 ms-xl6">
                           <div className={`formGroup`}>
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Requestor </label>
-                            <RhfTextField control={control} name="Requestor" styles={textFieldStyle} />
+                            <RhfTextField control={control} name="requestor" styles={textFieldStyle} />
                           </div>
                         </div>
                       </div>

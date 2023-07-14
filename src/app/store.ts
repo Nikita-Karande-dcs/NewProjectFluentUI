@@ -5,11 +5,13 @@ import {
 } from '@reduxjs/toolkit';
 import appSettingReducer from '../app/appSlice';
 import userLoginReducer from '../components/User/UserLoginSlice';
+import UserReducer from '../components/Home/UserSlice';
 
 export const store = configureStore({
 	reducer: {
 		appSetting: appSettingReducer,
 		userLogin: userLoginReducer,
+		User: UserReducer,
 	},
 	devTools: true,
 });
