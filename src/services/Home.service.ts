@@ -50,10 +50,10 @@ export async function getOneUser(Id: any) {
 				regionName: "Asia",
 				countries: [
 				  {
-					country: "Japan"
+					country: "Japan",
 				  },
 				  {
-					country: "China"
+					country: "China",
 				  }
 				]
 			  }
@@ -308,6 +308,185 @@ export async function getPermissionDropdown() {
 	  }
 	return res;
 	// return await doGet(API.GET_PERMISSION).then((response: any) => {
+	// 	 return response.Data;
+	// });
+}
+
+export async function getAllMarketAccess() {
+	const res={
+		"Data": [
+		  {
+			"id": 7,
+			"legalName": "Adstream Mexico, S.A de C.V.",
+			"active": "Y",
+			"region": [
+			  {
+				"name": "America",
+				"country": [
+				  {
+					"displayAs": "Adstream Mexico",
+					"dbName": "AD_MX"
+				  },
+				  {
+					"displayAs": "ADAS",
+					"dbName": "ADAS_U"
+				  },
+				  {
+					"displayAs": "ER USA",
+					"dbName": "ER_US"
+				  },
+				  {
+					"displayAs": "ER Canada",
+					"dbName": "ER_CN"
+				  }
+				]
+			  }
+			]
+		  },
+		  {
+			"id": 2,
+			"legalName": "Adstream Australia",
+			"active": "Y",
+			"region": [
+			  {
+				"name": "Asia-Pacific",
+				"country": [
+				  {
+					"displayAs": "Australia",
+					"dbName": "PP_AAU"
+				  },
+				  {
+					"displayAs": "Holdings",
+					"dbName": "Adstream_AU1"
+				  }
+				]
+			  }
+			]
+		  },
+		  {
+			"id": 1,
+			"legalName": "Adstream UK Ltd",
+			"active": "Y",
+			"region": [
+			  {
+				"name": "Europe",
+				"country": [
+				  {
+					"displayAs": "UK",
+					"dbName": "AD_GB"
+				  },
+				  {
+					"displayAs": "Sportgate (Non Trade Co)",
+					"dbName": "Spotgate_FI"
+				  },
+				  {
+					"displayAs": "Adjustments",
+					"dbName": "GRP_ADJ"
+				  },
+				  {
+					"displayAs": "Adstream France",
+					"dbName": "AD_FR"
+				  }
+				]
+			  }
+			]
+		  },
+		  {
+			"id": 3,
+			"legalName": "Cloud ltd",
+			"active": "Y",
+			"region": [
+			  {
+				"name": "Mena",
+				"country": [
+				  {
+					"displayAs": "Cloud",
+					"dbName": "Cloud_EG"
+				  },
+				  {
+					"displayAs": "Media Host (Non ER Company) ",
+					"dbName": "MH_ZA"
+				  }
+				]
+			  }
+			]
+		  }
+		]
+	  }
+	return res;
+	// return await doGet(API.GET_ALL_MARKET_ACCESS).then((response: any) => {
+	// 	 return response.Data;
+	// });
+}
+
+export async function getAllApplicationAccess() {
+	const res={
+		"Data": [
+		  {
+			"id": 1,
+			"active": "Y",
+			"key": [
+			  {
+				"name": "Finance",
+				"valuedata": [
+				  {
+					"value": "SAP Business One",
+					"description": "Description"
+				  },
+				  {
+					"value": "Data Transfer Workbench",
+					"description": "Description of Data Transfer"
+				  }
+				]
+			  }
+			]
+		  },
+		  {
+			"id": 3,
+			"active": "Y",
+			"key": [
+			  {
+				"name": "Reporting",
+				"valuedata": [
+				  {
+					"value": "Sharper Light Reporting",
+					"description": "Description Sharper"
+				  },
+				  {
+					"value": "Sharper Light Reporting Web User",
+					"description": "Description web user"
+				  }
+				]
+			  }
+			]
+		  },
+		  {
+			"id": 5,
+			"active": "Y",
+			"key": [
+			  {
+				"name": "SAP WEB Portal",
+				"valuedata": [
+				  {
+					"value": "Open Orders",
+					"description": "Description Open Order"
+				  },
+				  {
+					"value": "Red Cards",
+					"description": "Description Open Order"
+				  },
+				  {
+					"value": "Invoice Request",
+					"description": "Descriptin Invoice "
+				  }
+				]
+			  }
+			]
+		  }
+		]
+	  }
+	return res;
+	// return await doGet(API.GET_ALL_APPLICATION_ACCESS).then((response: any) => {
 	// 	 return response.Data;
 	// });
 }

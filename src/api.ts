@@ -7,3 +7,5 @@ export const UPDATE_API_USER = '';
 export const GET_OFFICE = 'api/UserRequest/GetRegionCountry';
 export const GET_LINE_MANAGER = 'api/UserRequest/GetLineManager';
 export const GET_PERMISSION = 'api/UserRequest/GetPermissionGroup';
+export const GET_ALL_MARKET_ACCESS = 'api/UserRequest/LoadMarketAccessMaster';
+export const GET_ALL_APPLICATION_ACCESS = 'api/UserRequest/LoadApplicationAccessMaster';
