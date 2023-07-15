@@ -14,7 +14,7 @@ import {
   IIconProps,
 }
   from '@fluentui/react';
-
+  import { format } from 'date-fns';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { contactDetailContentsiconButtonStyles, neutralColorsGray100, themePrimaryOverFlowItems, } from '../../styles/ContactStyles';
@@ -454,11 +454,12 @@ export default function HomeListData({
                             <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}> Start Date </label>
                             <DatePicker
                               id="fromDate"
-                              placeholder="fromDate"
+                              placeholder="Select Date"
                               isMonthPickerVisible={true}
                               style={{ marginTop: '5px', color: 'red' }}
                               onSelectDate={handleDateChange}
                               value={startDate ? new Date(startDate) : undefined}
+                              formatDate={(date) => (date ? format(date, 'dd/MM/yyyy') : '')}
                             />
                           </div>
                         </div>
@@ -617,7 +618,7 @@ export default function HomeListData({
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
                             <div className={`formGroup`}>
                               <label className={`${classNames.stackItemLabelStyles}`} style={neutralColorsGray100(myThemeContext)}>Web Approving Manager</label>
-                              <RhfDropdown options={options2} control={control} name="webApprovingManagerId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
+                              <RhfDropdown options={userDetail.LineManager} control={control} name="webApprovingManagerId" placeholder='Select a Value' styles={dropwDownFieldStyle} />
                             </div>
                           </div>
                           <div className="ms-Grid-col ms-lg12 ms-xl6">
